@@ -18,7 +18,6 @@ public class HomePageTest {
     private HomePage homePage;
 
 
-
     @BeforeClass
     public void setUp() {
         System.setProperty("webdriver.chrome.driver","D:/ChromeDriver/chromedriver.exe" );
