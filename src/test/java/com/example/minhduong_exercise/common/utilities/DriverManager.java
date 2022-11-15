@@ -16,11 +16,12 @@ public class DriverManager {
     private static WebDriver driver;
     private static ConfigFileReader configFileReader = new ConfigFileReader();
 
-    public static WebDriver getDriver(){
+    public static WebDriver getDriver() {
         return driver;
     }
+
     public static void open() {
-        setupDriver("firefox");
+        setupDriver(configFileReader.getBrowserDriver());
         driver.get(Url.HOMEPAGE.getUrl());
     }
 
@@ -38,15 +39,15 @@ public class DriverManager {
         }
     }
 
-    public static void maximizeWindow(){
+    public static void maximizeWindow() {
         driver.manage().window().maximize();
     }
 
-    public static void pageLoadTimeout(){
+    public static void pageLoadTimeout() {
         driver.manage().timeouts().pageLoadTimeout(configFileReader.getPageloadTimeout(), TimeUnit.SECONDS);
     }
 
-    public static void implicitlyWait(){
+    public static void implicitlyWait() {
         driver.manage().timeouts().implicitlyWait(configFileReader.getImplicitlyWait(), TimeUnit.SECONDS);
     }
 

@@ -10,10 +10,10 @@ import java.util.Properties;
 
 public class ConfigFileReader {
     private Properties properties;
-    private final String propertyFilePath= Utilities.getProjectPath() + "//src/test/resources/Configuration.properties";
+    private final String propertyFilePath = Utilities.getProjectPath() + "//src/test/resources/Configuration.properties";
 
 
-    public ConfigFileReader(){
+    public ConfigFileReader() {
         BufferedReader reader;
         try {
             reader = new BufferedReader(new FileReader(propertyFilePath));
@@ -32,13 +32,13 @@ public class ConfigFileReader {
 
     public long getImplicitlyWait() {
         String implicitlyWait = properties.getProperty("implicitlyWait");
-        if(implicitlyWait != null) return Long.parseLong(implicitlyWait);
+        if (implicitlyWait != null) return Long.parseLong(implicitlyWait);
         else throw new RuntimeException("implicitlyWait not specified in the Configuration.properties file.");
     }
 
     public long getPageloadTimeout() {
         String pageloadTimeout = properties.getProperty("pageLoadTimeout");
-        if(pageloadTimeout != null) return Long.parseLong(pageloadTimeout);
+        if (pageloadTimeout != null) return Long.parseLong(pageloadTimeout);
         else throw new RuntimeException("pageloadTimeout not specified in the Configuration.properties file.");
     }
 
@@ -48,6 +48,10 @@ public class ConfigFileReader {
 
     public String getPassword() {
         return properties.getProperty("password");
+    }
+
+    public String getBrowserDriver() {
+        return properties.getProperty("browser");
     }
 
 }

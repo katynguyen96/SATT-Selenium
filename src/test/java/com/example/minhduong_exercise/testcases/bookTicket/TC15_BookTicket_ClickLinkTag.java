@@ -1,10 +1,10 @@
 package com.example.minhduong_exercise.testcases.bookTicket;
 
-import com.example.minhduong_exercise.common.constant.ArriveStationConstant;
 import com.example.minhduong_exercise.common.constant.Station;
 import com.example.minhduong_exercise.common.constant.Tab;
 import com.example.minhduong_exercise.common.utilities.DriverManager;
 import com.example.minhduong_exercise.common.utilities.Utilities;
+import com.example.minhduong_exercise.common.utilities.logs.Log;
 import com.example.minhduong_exercise.pageObjects.railway.BookTicketPage;
 import com.example.minhduong_exercise.pageObjects.railway.LoginPage;
 import com.example.minhduong_exercise.pageObjects.railway.RegisterPage;
@@ -18,29 +18,30 @@ public class TC15_BookTicket_ClickLinkTag extends BaseTestSetUp {
 
     @Test
     public void TC15_Click_Book_ticket_LinkTag() {
-        System.out.println("TC15 - User can open \"Book ticket\" page by clicking on \"Book ticket\" link in \"Train timetable\" page");
-        RegisterPage registerPage = new RegisterPage();
-        registerPage.tabNavigate(Tab.REGISTER.getTabName());
-        String email = Utilities.generateRandomEmail(8);
-        String password = Utilities.generateRandomString(8);
-        String PID = Utilities.generateRandomString(8);
-        registerPage.registerAccount(email, password, password, PID);
+        System.out.println("TC15_User can open \"Book ticket\" page by clicking on \"Book ticket\" link in \"Train timetable\" page");
+        Log.info("Pre-condition: Create and activate a new account");
+        Log.info("Navigate to QA Railway Website");
+        registerAccount();
+        Log.info("Register new account");
 
         LoginPage loginPage = new LoginPage();
-        loginPage.tabNavigate(Tab.LOGIN.getTabName());
-        loginPage.loginAccount(email, password);
+        loginPage.tabNavigate(Tab.LOGIN).click();
+        loginPage.loginAccount(getEmail(), getPassword());
+        Log.info("Login with new account");
 
         TimetablePage timetablePage = new TimetablePage();
-        timetablePage.tabNavigate(Tab.TIMETABLE.getTabName());
+        timetablePage.tabNavigate(Tab.TIMETABLE).click();
+        Log.info("Click on \"Timetable\" tab");
         WebElement linkTag = timetablePage.getRow(Station.HUE.getTabName(), Station.SAIGON.getTabName());
         DriverManager.scrollToView(linkTag);
         linkTag.click();
+        Log.info(" Click on \"book ticket\" link of the route from \"Huế\" to \"Sài Gòn\"");
 
         BookTicketPage bookTicketPage = new BookTicketPage();
         String selectedDepartStation = bookTicketPage.getSelectedDepartSationValue().getText();
         String selectedArriveStation = bookTicketPage.getSelectedArriveStationValue().getText();
 
         Assert.assertEquals(Station.HUE.getTabName(), selectedDepartStation);
-        Assert.assertEquals(ArriveStationConstant.SAIGON.getTabName(), selectedArriveStation);
+        Assert.assertEquals(Station.SAIGON.getTabName(), selectedArriveStation);
     }
 }

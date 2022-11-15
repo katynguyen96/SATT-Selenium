@@ -6,44 +6,44 @@ import org.openqa.selenium.WebElement;
 
 public class ChangePasswordPage extends BasePage {
     //Locator
-    private final By loc_txtCurrentPassword = By.xpath("//input[@id='currentPassword']");
-    private final By loc_txtNewPassword = By.xpath("//input[@id='newPassword']");
-    private final By loc_txtConfirmPassword = By.xpath("//input[@id='confirmPassword']");
-    private final By loc_btnChangePassword = By.xpath("//input[@type='submit' and @value='Change Password']");
-    private final By loc_paSuccessMessage = By.xpath("//form[@id='ChangePW']//p[@class='message success']");
+    private final By txtCurrentPassword = By.xpath("//input[@id='currentPassword']");
+    private final By txtNewPassword = By.xpath("//input[@id='newPassword']");
+    private final By txtConfirmPassword = By.xpath("//input[@id='confirmPassword']");
+    private final By btnChangePassword = By.xpath("//input[@type='submit' and @value='Change Password']");
+    private final By pSuccessMessage = By.xpath("//form[@id='ChangePW']//p[@class='message success']");
 
 
     //Element
-    protected WebElement getLoc_txtCurrentPassword() {
-        return DriverManager.getDriver().findElement(loc_txtCurrentPassword);
+    protected WebElement getTxtCurrentPassword() {
+        return DriverManager.getDriver().findElement(txtCurrentPassword);
     }
 
-    protected WebElement getLoc_txtNewPassword() {
-        return DriverManager.getDriver().findElement(loc_txtNewPassword);
+    protected WebElement getTxtNewPassword() {
+        return DriverManager.getDriver().findElement(txtNewPassword);
     }
 
-    protected WebElement getLoc_txtConfirmPassword() {
-        return DriverManager.getDriver().findElement(loc_txtConfirmPassword);
+    protected WebElement getTxtConfirmPassword() {
+        return DriverManager.getDriver().findElement(txtConfirmPassword);
     }
 
-    protected WebElement getLoc_btnChangePassword() {
-        return DriverManager.getDriver().findElement(loc_btnChangePassword);
+    protected WebElement getBtnChangePassword() {
+        return DriverManager.getDriver().findElement(btnChangePassword);
     }
 
-    protected WebElement getLoc_paSuccessMessage() {
-        return DriverManager.getDriver().findElement(loc_paSuccessMessage);
+    protected WebElement getpSuccessMessage() {
+        return DriverManager.getDriver().findElement(pSuccessMessage);
     }
 
 
     //Method
     public String getSuccessMessage() {
-        return getLoc_paSuccessMessage().getText();
+        return getpSuccessMessage().getText();
     }
 
     public void ChangePassword(String curPass, String newPass, String confrimPass) {
-        getLoc_txtCurrentPassword().sendKeys(curPass);
-        getLoc_txtNewPassword().sendKeys(newPass);
-        getLoc_txtConfirmPassword().sendKeys(confrimPass);
-        getLoc_btnChangePassword().click();
+        getTxtCurrentPassword().sendKeys(curPass);
+        getTxtNewPassword().sendKeys(newPass);
+        getTxtConfirmPassword().sendKeys(confrimPass);
+        getBtnChangePassword().click();
     }
 }
