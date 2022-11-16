@@ -4,6 +4,8 @@ import com.example.minhduong_exercise.common.utilities.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 public class MyTicketPage extends BasePage {
     private final By btnCancel = By.xpath("//input[@value='Cancel']");
     private final By tblTicket = By.className("DivTable");
@@ -19,12 +21,8 @@ public class MyTicketPage extends BasePage {
     }
 
     public Boolean isTableDisplayed() {
-        try {
-            DriverManager.getDriver().findElement(tblTicket);
-            return false;
-        } catch (org.openqa.selenium.NoSuchElementException e) {
-            return true;
-        }
+        List<WebElement> tableElement = DriverManager.getDriver().findElements(tblTicket);
+        return tableElement.size() == 0;
     }
 
     public void deleteTicket() {

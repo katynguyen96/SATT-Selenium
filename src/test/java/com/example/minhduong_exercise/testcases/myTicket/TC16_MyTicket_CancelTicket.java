@@ -37,7 +37,7 @@ public class TC16_MyTicket_CancelTicket extends BaseTestSetUp {
         Log.info("Click on \"My ticket\" tab");
         myTicketPage.deleteTicket();
         Log.info("Click on \"Cancel\" button of ticket which user want to cancel.");
-        DriverManager.alertDriver().dismiss();
+        DriverManager.alertDriver().accept();
         Log.info(" Click on \"OK\" button on Confirmation message \"Are you sure?\"");
         if(myTicketPage.getNextTicketID()==null){
             Assert.assertTrue(myTicketPage.isTableDisplayed());
