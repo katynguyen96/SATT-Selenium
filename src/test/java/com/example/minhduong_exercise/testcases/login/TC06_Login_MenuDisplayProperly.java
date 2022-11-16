@@ -13,7 +13,7 @@ public class TC06_Login_MenuDisplayProperly extends BaseTestSetUp {
 
     @Test
     public void TC06_ChangeTabMenu() {
-        Log.info("****** TC06_Test UI tab menu after login ******");
+        Log.info("TC06_Test UI tab menu after login");
         Log.info("Navigate to QA Railway Website");
         LoginPage loginPage = new LoginPage();
         loginPage.tabNavigate(Tab.LOGIN).click();

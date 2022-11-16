@@ -14,7 +14,7 @@ public enum SeatType {
         this.seatType = seatType;
     }
 
-    public String getTabName() {
+    public String getSeatType() {
         return this.seatType;
     }
 }

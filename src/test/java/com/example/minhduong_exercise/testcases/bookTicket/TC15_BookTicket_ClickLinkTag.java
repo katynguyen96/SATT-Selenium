@@ -3,11 +3,9 @@ package com.example.minhduong_exercise.testcases.bookTicket;
 import com.example.minhduong_exercise.common.constant.Station;
 import com.example.minhduong_exercise.common.constant.Tab;
 import com.example.minhduong_exercise.common.utilities.DriverManager;
-import com.example.minhduong_exercise.common.utilities.Utilities;
 import com.example.minhduong_exercise.common.utilities.logs.Log;
 import com.example.minhduong_exercise.pageObjects.railway.BookTicketPage;
 import com.example.minhduong_exercise.pageObjects.railway.LoginPage;
-import com.example.minhduong_exercise.pageObjects.railway.RegisterPage;
 import com.example.minhduong_exercise.pageObjects.railway.TimetablePage;
 import com.example.minhduong_exercise.testcases.BaseTestSetUp;
 import org.openqa.selenium.WebElement;
@@ -32,7 +30,7 @@ public class TC15_BookTicket_ClickLinkTag extends BaseTestSetUp {
         TimetablePage timetablePage = new TimetablePage();
         timetablePage.tabNavigate(Tab.TIMETABLE).click();
         Log.info("Click on \"Timetable\" tab");
-        WebElement linkTag = timetablePage.getRow(Station.HUE.getTabName(), Station.SAIGON.getTabName());
+        WebElement linkTag = timetablePage.getRow(Station.HUE.getStation(), Station.SAIGON.getStation());
         DriverManager.scrollToView(linkTag);
         linkTag.click();
         Log.info(" Click on \"book ticket\" link of the route from \"Huế\" to \"Sài Gòn\"");
@@ -41,7 +39,7 @@ public class TC15_BookTicket_ClickLinkTag extends BaseTestSetUp {
         String selectedDepartStation = bookTicketPage.getSelectedDepartSationValue().getText();
         String selectedArriveStation = bookTicketPage.getSelectedArriveStationValue().getText();
 
-        Assert.assertEquals(Station.HUE.getTabName(), selectedDepartStation);
-        Assert.assertEquals(Station.SAIGON.getTabName(), selectedArriveStation);
+        Assert.assertEquals(Station.HUE.getStation(), selectedDepartStation);
+        Assert.assertEquals(Station.SAIGON.getStation(), selectedArriveStation);
     }
 }

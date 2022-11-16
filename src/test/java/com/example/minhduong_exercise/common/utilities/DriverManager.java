@@ -3,6 +3,7 @@ package com.example.minhduong_exercise.common.utilities;
 import com.example.minhduong_exercise.common.constant.Url;
 import com.example.minhduong_exercise.dataProvider.ConfigFileReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -76,6 +77,10 @@ public class DriverManager {
     public static void scrollToView(WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView();", element);
+    }
+
+    public static Alert alertDriver() {
+        return DriverManager.getDriver().switchTo().alert();
     }
 
     public static void close() {

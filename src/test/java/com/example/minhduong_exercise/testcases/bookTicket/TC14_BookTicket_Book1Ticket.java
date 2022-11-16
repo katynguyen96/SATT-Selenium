@@ -41,10 +41,10 @@ public class TC14_BookTicket_Book1Ticket extends BaseTestSetUp {
         String seatTypeValue = successPage.getRow("Seat Type");
         String dateValue = successPage.getRow("Depart Date");
         String amountValue = successPage.getRow("Amount");
-        Assert.assertEquals(bookTicketPage.getSuccessTitleValue(), "Ticket Booked Successfully!");
-        Assert.assertTrue(departStationValue.contains(Station.SAIGON.getTabName())
-                && arriveStationValue.contains(Station.NHATRANG.getTabName())
-                && seatTypeValue.contains(SeatType.SBWAC.getTabName())
+        Assert.assertEquals(bookTicketPage.getSuccessTitleValue(), Message.BOOKTICKETSUCCESS.getMessage());
+        Assert.assertTrue(departStationValue.contains(Station.SAIGON.getStation())
+                && arriveStationValue.contains(Station.NHATRANG.getStation())
+                && seatTypeValue.contains(SeatType.SBWAC.getSeatType())
                 && amountValue.contains("1")
                 && dateValue.contains(departDate));
     }

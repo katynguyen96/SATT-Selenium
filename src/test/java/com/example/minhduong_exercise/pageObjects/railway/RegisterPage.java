@@ -12,7 +12,7 @@ public class RegisterPage extends BasePage {
     private final By txtPID = By.xpath("//input[@id='pid']");
     private final By btnRegister = By.xpath("//form[@id='RegisterForm']//input[@type='submit']");
     private final By pRegisterSuccessMessage = By.xpath("//div[@id='content']/p");
-    private final By lblErrorMessageConfirmPassword = By.xpath("//label[@for='confirmPassword' and contains(@class,'validation-error')]");
+    private final By lblErrorMessagePIDPassword = By.xpath("//label[@for='pid' and contains(@class,'validation-error')]");
     private final By lblErrorMessagePassword = By.xpath("//label[@for='password' and contains(@class,'validation-error')]");
     private final By pFormErrorMessage = By.xpath("//div[@id='content']//p[contains(@class,'message error')]");
 
@@ -46,8 +46,8 @@ public class RegisterPage extends BasePage {
         return DriverManager.getDriver().findElement(pRegisterSuccessMessage);
     }
 
-    protected WebElement getLblErrorMessageConfirmPassword() {
-        return DriverManager.getDriver().findElement(lblErrorMessageConfirmPassword);
+    protected WebElement getLblErrorMessagePIDPassword() {
+        return DriverManager.getDriver().findElement(lblErrorMessagePIDPassword);
 
     }
 
@@ -66,8 +66,8 @@ public class RegisterPage extends BasePage {
     }
 
 
-    public String getErrorMessageConfirmPassword() {
-        return getLblErrorMessageConfirmPassword().getText();
+    public String getErrorMessagePIDPassword() {
+        return getLblErrorMessagePIDPassword().getText();
     }
 
 

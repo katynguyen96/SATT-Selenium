@@ -1,5 +1,6 @@
 package com.example.minhduong_exercise.testcases.changePassword;
 
+import com.example.minhduong_exercise.common.constant.Message;
 import com.example.minhduong_exercise.common.utilities.Utilities;
 import com.example.minhduong_exercise.common.constant.Tab;
 import com.example.minhduong_exercise.common.utilities.logs.Log;
@@ -33,7 +34,7 @@ public class TC09_ChangePassword_ChangeSuccess extends BaseTestSetUp {
         changePasswordPage.ChangePassword(getPassword(), newPass, newPass);
         Log.info("Enter valid value into all fields.");
         Log.info("Click on \"Change Password\" button");
-        Assert.assertTrue(changePasswordPage.getSuccessMessage().contains("Your password has been updated"));
+        Assert.assertTrue(changePasswordPage.getSuccessMessage().contains(Message.CHANGEPASSSUCCESS.getMessage()));
     }
 
 }
