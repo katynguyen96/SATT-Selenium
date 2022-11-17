@@ -17,7 +17,7 @@ public class TC04_BookTicket_UnloggedUser extends BaseTestSetUp {
         Log.info("Navigate to QA Railway Website");
         Log.info("Click on \"Book ticket\" tab");
         BookTicketPage bookTicketPage = new BookTicketPage();
-        bookTicketPage.tabNavigate(Tab.BOOKTICKET).click();
+        bookTicketPage.tabNavigate(Tab.BOOKTICKET);
         String loginUrl = DriverManager.getDriver().getCurrentUrl();
         Assert.assertEquals(loginUrl, Url.NOTLOGIN.getUrl());
     }

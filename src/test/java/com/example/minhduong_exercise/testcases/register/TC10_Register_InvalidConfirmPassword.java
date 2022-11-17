@@ -15,7 +15,7 @@ public class TC10_Register_InvalidConfirmPassword extends BaseTestSetUp {
         System.out.println("TC10_User can't create account with \"Confirm password\" is not the same with \"Password\"");
         Log.info("Navigate to QA Railway Website");
         RegisterPage registerPage = new RegisterPage();
-        registerPage.tabNavigate(Tab.REGISTER).click();
+        registerPage.tabNavigate(Tab.REGISTER);
         Log.info("Click on \"Register\" tab");
 
         String email = Utilities.generateRandomEmail(8);

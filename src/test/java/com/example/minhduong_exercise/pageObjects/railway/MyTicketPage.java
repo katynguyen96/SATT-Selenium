@@ -8,7 +8,7 @@ import java.util.List;
 
 public class MyTicketPage extends BasePage {
     private final By btnCancel = By.xpath("//input[@value='Cancel']");
-    private final By tblTicket = By.className("DivTable");
+    private final By tblTicket = By.xpath("//div[@id='content']//div[@class='DivTable']//table");
     private String deletedTicketID;
 
     protected WebElement getBtnCancel() {
@@ -21,8 +21,7 @@ public class MyTicketPage extends BasePage {
     }
 
     public Boolean isTableDisplayed() {
-        List<WebElement> tableElement = DriverManager.getDriver().findElements(tblTicket);
-        return tableElement.size() == 0;
+        return DriverManager.getDriver().findElements(tblTicket).isEmpty();
     }
 
     public void deleteTicket() {
@@ -33,13 +32,12 @@ public class MyTicketPage extends BasePage {
     }
 
     public String getNextTicketID() {
-        try{
+        List<WebElement> ticketRemain = DriverManager.getDriver().findElements(btnCancel);
+        if (ticketRemain.size() != 0) {
             DriverManager.scrollToView(getBtnCancel());
             String nextTicketID = getBtnCancel().getAttribute("onclick");
             nextTicketID = nextTicketID.substring(nextTicketID.indexOf("(") + 1, nextTicketID.indexOf(")"));
             return nextTicketID;
-        } catch(org.openqa.selenium.NoSuchElementException e){
-            return null;
-        }
+        } else return null;
     }
 }
