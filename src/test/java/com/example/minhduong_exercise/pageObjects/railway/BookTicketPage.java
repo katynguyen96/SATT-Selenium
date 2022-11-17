@@ -111,6 +111,7 @@ public class BookTicketPage extends BasePage {
         return getSelectedArriveStation().getText();
     }
 
+
     public String getDepartDateValue(String value) {
         return departDate(value).getText();
     }
