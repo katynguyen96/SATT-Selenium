@@ -43,15 +43,21 @@ public class ConfigFileReader {
     }
 
     public String getUsername() {
-        return properties.getProperty("username");
+        String username = properties.getProperty("username");
+        if (username != null) return username;
+        else throw new RuntimeException("username not specified in the Configuration.properties file.");
     }
 
     public String getPassword() {
-        return properties.getProperty("password");
+        String password = properties.getProperty("password");
+        if (password != null) return password;
+        else throw new RuntimeException("password not specified in the Configuration.properties file.");
     }
 
     public String getBrowserDriver() {
-        return properties.getProperty("browser");
+        String browser = properties.getProperty("browser");
+        if (browser != null) return browser;
+        else throw new RuntimeException("browser not specified in the Configuration.properties file.");
     }
 
 }

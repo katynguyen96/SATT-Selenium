@@ -22,7 +22,7 @@ public class TC08_Login_NotActivatedAccount extends BaseTestSetUp {
         Log.info("Click on \"Register\" button");
 
         LoginPage loginPage = new LoginPage();
-        loginPage.tabNavigate(Tab.LOGIN).click();
+        loginPage.tabNavigate(Tab.LOGIN);
         Log.info(" Click on \"Login\" tab");
         loginPage.loginAccount(getEmail(), getPassword());
         Log.info(" Enter username and password of account hasn't been activated.");

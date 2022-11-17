@@ -2,6 +2,7 @@ package com.example.minhduong_exercise.testcases.login;
 
 import com.example.minhduong_exercise.common.constant.Message;
 import com.example.minhduong_exercise.common.constant.Tab;
+import com.example.minhduong_exercise.common.utilities.listener.ReportListener;
 import com.example.minhduong_exercise.common.utilities.logs.Log;
 import com.example.minhduong_exercise.dataProvider.ConfigFileReader;
 import com.example.minhduong_exercise.pageObjects.railway.LoginPage;
@@ -17,7 +18,7 @@ public class TC05_Login_WrongPassSeveralTime extends BaseTestSetUp {
         Log.info("TC05 - System shows message when user enters wrong password several times");
         Log.info("Navigate to QA Railway Website");
         LoginPage loginPage = new LoginPage();
-        loginPage.tabNavigate(Tab.LOGIN).click();
+        loginPage.tabNavigate(Tab.LOGIN);
         Log.info("Click on \"Login\" tab");
         for (int i = 0; i < 4; i++) {
             loginPage.loginAccount(configFileReader.getUsername(), "123123123");

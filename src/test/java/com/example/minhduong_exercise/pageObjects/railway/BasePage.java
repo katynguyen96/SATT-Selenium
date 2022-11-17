@@ -8,7 +8,11 @@ import org.openqa.selenium.By;
 public class BasePage {
 
     //Method
-    public WebElement tabNavigate(Tab tabName) {
+    protected WebElement getTab(Tab tabName) {
         return DriverManager.getDriver().findElement(By.xpath("//div[@id='menu']//span[.=" + "'" + tabName.getTabName() + "'" + "]/.."));
+    }
+
+    public void tabNavigate(Tab tabName){
+        getTab(tabName).click();
     }
 }

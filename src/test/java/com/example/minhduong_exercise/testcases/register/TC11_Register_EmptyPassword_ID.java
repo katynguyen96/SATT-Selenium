@@ -16,7 +16,7 @@ public class TC11_Register_EmptyPassword_ID extends BaseTestSetUp {
         System.out.println("TC11_User can't create account while password and PID fields are empty");
         Log.info("Navigate to QA Railway Website");
         RegisterPage registerPage = new RegisterPage();
-        registerPage.tabNavigate(Tab.REGISTER).click();
+        registerPage.tabNavigate(Tab.REGISTER);
         Log.info("Click on \"Register\" tab");
 
         String email = Utilities.generateRandomEmail(8);

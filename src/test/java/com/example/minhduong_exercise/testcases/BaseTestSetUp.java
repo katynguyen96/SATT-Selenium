@@ -30,7 +30,7 @@ public class BaseTestSetUp {
     }
     public void registerAccount(){
         RegisterPage registerPage = new RegisterPage();
-        registerPage.tabNavigate(Tab.REGISTER).click();
+        registerPage.tabNavigate(Tab.REGISTER);
         email = Utilities.generateRandomEmail(8);
         password = Utilities.generateRandomString(8);
         String PID = Utilities.generateRandomString(8);

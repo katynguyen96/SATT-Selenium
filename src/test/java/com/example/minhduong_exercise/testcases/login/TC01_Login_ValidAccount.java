@@ -17,13 +17,12 @@ public class TC01_Login_ValidAccount extends BaseTestSetUp {
         Log.info("TC01_Test login with valid account");
         Log.info("Navigate to QA Railway Website");
         LoginPage loginPage = new LoginPage();
-        loginPage.tabNavigate(Tab.LOGIN).click();
+        loginPage.tabNavigate(Tab.LOGIN);
         Log.info("Click on \"Login\" tab");
         loginPage.loginAccount(configFileReader.getUsername(), configFileReader.getPassword());
         Log.info("Enter email: " + configFileReader.getUsername());
         Log.info("Enter password: " + configFileReader.getPassword());
         Log.info("Click on \"Login\" button");
-        Assert.assertEquals(loginPage.getWelcomeText(), Message.WC.getMessage());
+        Assert.assertEquals(loginPage.getWelcomeText(), Message.WELCOME.getMessage());
     }
-
 }

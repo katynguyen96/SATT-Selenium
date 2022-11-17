@@ -18,7 +18,7 @@ public class TC03_Login_InvalidPassword extends BaseTestSetUp {
         Log.info("TC03_Test login with invalid password");
         Log.info("Navigate to QA Railway Website");
         LoginPage loginPage = new LoginPage();
-        loginPage.tabNavigate(Tab.LOGIN).click();
+        loginPage.tabNavigate(Tab.LOGIN);
         Log.info("Click on \"Login\" tab");
         loginPage.loginAccount(configFileReader.getUsername(), Utilities.generateRandomString(8));
         Log.info("Enter valid Email and invalid Password");
