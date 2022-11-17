@@ -1,5 +1,6 @@
 package com.example.minhduong_exercise.testcases.changePassword;
 
+import com.example.minhduong_exercise.common.constant.Message;
 import com.example.minhduong_exercise.common.utilities.Utilities;
 import com.example.minhduong_exercise.common.constant.Tab;
 import com.example.minhduong_exercise.common.utilities.logs.Log;
@@ -16,24 +17,23 @@ public class TC09_ChangePassword_ChangeSuccess extends BaseTestSetUp {
     public void TC09_ChangePasswordSuccess() {
         System.out.println("TC09_User can change password");
         Log.info("Pre-condition: Create and activate a new account");
-        RegisterPage registerPage = new RegisterPage();
 
         registerAccount();
         Log.info("Create new account");
 
         LoginPage loginPage = new LoginPage();
-        loginPage.tabNavigate(Tab.LOGIN).click();
+        loginPage.tabNavigate(Tab.LOGIN);
         loginPage.loginAccount(getEmail(), getPassword());
         Log.info("Login with new account");
 
         ChangePasswordPage changePasswordPage = new ChangePasswordPage();
-        changePasswordPage.tabNavigate(Tab.CHANGEPASS).click();
+        changePasswordPage.tabNavigate(Tab.CHANGEPASS);
         Log.info("Click on \"Change Password\" tab");
         String newPass = Utilities.generateRandomString(8);
         changePasswordPage.ChangePassword(getPassword(), newPass, newPass);
         Log.info("Enter valid value into all fields.");
         Log.info("Click on \"Change Password\" button");
-        Assert.assertTrue(changePasswordPage.getSuccessMessage().contains("Your password has been updated"));
+        Assert.assertTrue(changePasswordPage.getSuccessMessage().contains(Message.CHANGEPASSSUCCESS.getMessage()));
     }
 
 }

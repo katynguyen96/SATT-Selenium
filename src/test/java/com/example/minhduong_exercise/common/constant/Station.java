@@ -14,7 +14,7 @@ public enum Station {
         this.departStation = departStation;
     }
 
-    public String getTabName() {
+    public String getStation() {
         return this.departStation;
     }
 }

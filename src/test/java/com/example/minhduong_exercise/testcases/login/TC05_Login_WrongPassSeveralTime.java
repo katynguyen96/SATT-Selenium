@@ -1,5 +1,6 @@
 package com.example.minhduong_exercise.testcases.login;
 
+import com.example.minhduong_exercise.common.constant.Message;
 import com.example.minhduong_exercise.common.constant.Tab;
 import com.example.minhduong_exercise.common.utilities.logs.Log;
 import com.example.minhduong_exercise.dataProvider.ConfigFileReader;
@@ -13,10 +14,10 @@ public class TC05_Login_WrongPassSeveralTime extends BaseTestSetUp {
 
     @Test
     public void TC05_InputWrongPasswordSeveralTime() {
-        Log.info("****** TC05 - System shows message when user enters wrong password several times ******");
+        Log.info("TC05 - System shows message when user enters wrong password several times");
         Log.info("Navigate to QA Railway Website");
         LoginPage loginPage = new LoginPage();
-        loginPage.tabNavigate(Tab.LOGIN).click();
+        loginPage.tabNavigate(Tab.LOGIN);
         Log.info("Click on \"Login\" tab");
         for (int i = 0; i < 4; i++) {
             loginPage.loginAccount(configFileReader.getUsername(), "123123123");
@@ -24,6 +25,6 @@ public class TC05_Login_WrongPassSeveralTime extends BaseTestSetUp {
         Log.info("Enter valid information into \"Username\" textbox except \"Password\" textbox.");
         Log.info("Click on \"Login\" button");
         Log.info("Repeat step 3 three more times.");
-        Assert.assertEquals(loginPage.getErrorMessageInvalidAccount(), "You have used 4 out of 5 login attempts. After all 5 have been used, you will be unable to login for 15 minutes.");
+        Assert.assertEquals(loginPage.getErrorMessageInvalidAccount(), Message.MULTILOGIN.getMessage());
     }
 }

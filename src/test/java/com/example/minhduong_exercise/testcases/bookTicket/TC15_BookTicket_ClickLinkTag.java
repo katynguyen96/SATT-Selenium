@@ -2,17 +2,14 @@ package com.example.minhduong_exercise.testcases.bookTicket;
 
 import com.example.minhduong_exercise.common.constant.Station;
 import com.example.minhduong_exercise.common.constant.Tab;
-import com.example.minhduong_exercise.common.utilities.DriverManager;
-import com.example.minhduong_exercise.common.utilities.Utilities;
 import com.example.minhduong_exercise.common.utilities.logs.Log;
 import com.example.minhduong_exercise.pageObjects.railway.BookTicketPage;
 import com.example.minhduong_exercise.pageObjects.railway.LoginPage;
-import com.example.minhduong_exercise.pageObjects.railway.RegisterPage;
 import com.example.minhduong_exercise.pageObjects.railway.TimetablePage;
 import com.example.minhduong_exercise.testcases.BaseTestSetUp;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 public class TC15_BookTicket_ClickLinkTag extends BaseTestSetUp {
 
@@ -25,23 +22,23 @@ public class TC15_BookTicket_ClickLinkTag extends BaseTestSetUp {
         Log.info("Register new account");
 
         LoginPage loginPage = new LoginPage();
-        loginPage.tabNavigate(Tab.LOGIN).click();
+        loginPage.tabNavigate(Tab.LOGIN);
         loginPage.loginAccount(getEmail(), getPassword());
         Log.info("Login with new account");
 
         TimetablePage timetablePage = new TimetablePage();
-        timetablePage.tabNavigate(Tab.TIMETABLE).click();
+        timetablePage.tabNavigate(Tab.TIMETABLE);
         Log.info("Click on \"Timetable\" tab");
-        WebElement linkTag = timetablePage.getRow(Station.HUE.getTabName(), Station.SAIGON.getTabName());
-        DriverManager.scrollToView(linkTag);
-        linkTag.click();
+        timetablePage.clickLink(Station.HUE, Station.SAIGON);
         Log.info(" Click on \"book ticket\" link of the route from \"Huế\" to \"Sài Gòn\"");
 
         BookTicketPage bookTicketPage = new BookTicketPage();
-        String selectedDepartStation = bookTicketPage.getSelectedDepartSationValue().getText();
-        String selectedArriveStation = bookTicketPage.getSelectedArriveStationValue().getText();
+        String selectedDepartStation = bookTicketPage.getSelectedDepartSationValue();
+        String selectedArriveStation = bookTicketPage.getSelectedArriveStationValue();
 
-        Assert.assertEquals(Station.HUE.getTabName(), selectedDepartStation);
-        Assert.assertEquals(Station.SAIGON.getTabName(), selectedArriveStation);
+        SoftAssert softassert = new SoftAssert();
+        softassert.assertEquals(Station.HUE.getStation(), selectedDepartStation);
+        softassert.assertEquals(Station.SAIGON.getStation(), selectedArriveStation);
+        softassert.assertAll();
     }
 }

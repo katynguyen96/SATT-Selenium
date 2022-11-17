@@ -1,6 +1,7 @@
 package com.example.minhduong_exercise.testcases.bookTicket;
 
 import com.example.minhduong_exercise.common.constant.Tab;
+import com.example.minhduong_exercise.common.constant.Url;
 import com.example.minhduong_exercise.common.utilities.DriverManager;
 import com.example.minhduong_exercise.common.utilities.logs.Log;
 import com.example.minhduong_exercise.pageObjects.railway.BookTicketPage;
@@ -16,8 +17,8 @@ public class TC04_BookTicket_UnloggedUser extends BaseTestSetUp {
         Log.info("Navigate to QA Railway Website");
         Log.info("Click on \"Book ticket\" tab");
         BookTicketPage bookTicketPage = new BookTicketPage();
-        bookTicketPage.tabNavigate(Tab.BOOKTICKET).click();
+        bookTicketPage.tabNavigate(Tab.BOOKTICKET);
         String loginUrl = DriverManager.getDriver().getCurrentUrl();
-        Assert.assertEquals(loginUrl, "http://www.railwayb2.somee.com/Account/Login.cshtml?ReturnUrl=/Page/BookTicketPage.cshtml");
+        Assert.assertEquals(loginUrl, Url.NOTLOGIN.getUrl());
     }
 }

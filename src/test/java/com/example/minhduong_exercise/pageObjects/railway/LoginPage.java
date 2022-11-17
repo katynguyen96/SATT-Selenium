@@ -61,8 +61,12 @@ public class LoginPage extends BasePage {
     }
 
 
-    public WebElement getTab(String tabName) {
+    protected WebElement getTab(String tabName) {
         return getMnuTabMenu().findElement(By.xpath("//span[.=" + "'" + tabName + "'" + "]"));
+    }
+
+    public Boolean isTabDisplayed(String tabName){
+        return getTab(tabName).isDisplayed();
     }
 
     public void loginAccount(String userName, String passWord) {

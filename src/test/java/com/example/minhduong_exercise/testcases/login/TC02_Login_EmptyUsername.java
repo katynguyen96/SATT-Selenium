@@ -1,5 +1,6 @@
 package com.example.minhduong_exercise.testcases.login;
 
+import com.example.minhduong_exercise.common.constant.Message;
 import com.example.minhduong_exercise.common.constant.Tab;
 import com.example.minhduong_exercise.common.utilities.logs.Log;
 import com.example.minhduong_exercise.dataProvider.ConfigFileReader;
@@ -13,13 +14,13 @@ public class TC02_Login_EmptyUsername extends BaseTestSetUp {
 
     @Test
     public void TC02_loginWithEmptyUserName() {
-        Log.info("****** TC02_Test login with empty username ******");
+        Log.info("TC02_Test login with empty username");
         Log.info("Navigate to QA Railway Website");
         LoginPage loginPage = new LoginPage();
-        loginPage.tabNavigate(Tab.LOGIN).click();
+        loginPage.tabNavigate(Tab.LOGIN);
         Log.info("Click on \"Login\" tab");
         loginPage.loginAccount("", configFileReader.getPassword());
         Log.info("Enter password: " + configFileReader.getPassword());
-        Assert.assertEquals(loginPage.getFormErrorMessage(), "There was a problem with your login and/or errors exist in your form.");
+        Assert.assertEquals(loginPage.getFormErrorMessage(), Message.FORMERR.getMessage());
     }
 }

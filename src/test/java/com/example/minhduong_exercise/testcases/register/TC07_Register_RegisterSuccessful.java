@@ -1,7 +1,6 @@
 package com.example.minhduong_exercise.testcases.register;
 
-import com.example.minhduong_exercise.common.utilities.Utilities;
-import com.example.minhduong_exercise.common.constant.Tab;
+import com.example.minhduong_exercise.common.constant.Message;
 import com.example.minhduong_exercise.common.utilities.logs.Log;
 import com.example.minhduong_exercise.pageObjects.railway.RegisterPage;
 import com.example.minhduong_exercise.testcases.BaseTestSetUp;
@@ -19,6 +18,6 @@ public class TC07_Register_RegisterSuccessful extends BaseTestSetUp {
         Log.info("Click on \"Register\" tab");
         Log.info("Enter valid information into all fields");
         Log.info("Click on \"Register\" button");
-        Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "You're here");
+        Assert.assertEquals(registerPage.getRegisterSuccessMessage(), Message.REGISTER.getMessage());
     }
 }

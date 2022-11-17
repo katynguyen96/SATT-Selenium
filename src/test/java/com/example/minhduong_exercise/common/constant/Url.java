@@ -2,6 +2,7 @@ package com.example.minhduong_exercise.common.constant;
 
 public enum Url {
     HOMEPAGE("http://railwayb2.somee.com/Page/HomePage.cshtml"),
+    NOTLOGIN("http://railwayb2.somee.com/Account/Login.cshtml?ReturnUrl=/Page/BookTicketPage.cshtml"),
     FAQ("http://railwayb2.somee.com/Page/FAQ.cshtml#"),
     CONTACT("http://railwayb2.somee.com/Page/Contact.cshtml"),
     TIMETABLE("http://railwayb2.somee.com/Page/TrainTimeListPage.cshtml"),

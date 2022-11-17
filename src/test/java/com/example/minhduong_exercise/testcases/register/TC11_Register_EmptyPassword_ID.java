@@ -1,5 +1,6 @@
 package com.example.minhduong_exercise.testcases.register;
 
+import com.example.minhduong_exercise.common.constant.Message;
 import com.example.minhduong_exercise.common.utilities.Utilities;
 import com.example.minhduong_exercise.common.constant.Tab;
 import com.example.minhduong_exercise.common.utilities.logs.Log;
@@ -15,7 +16,7 @@ public class TC11_Register_EmptyPassword_ID extends BaseTestSetUp {
         System.out.println("TC11_User can't create account while password and PID fields are empty");
         Log.info("Navigate to QA Railway Website");
         RegisterPage registerPage = new RegisterPage();
-        registerPage.tabNavigate(Tab.REGISTER).click();
+        registerPage.tabNavigate(Tab.REGISTER);
         Log.info("Click on \"Register\" tab");
 
         String email = Utilities.generateRandomEmail(8);
@@ -24,9 +25,9 @@ public class TC11_Register_EmptyPassword_ID extends BaseTestSetUp {
         registerPage.registerAccount(email, "", confirmPassword, "");
         Log.info("Enter valid email address and leave other fields empty");
         Log.info(" Click on \"Register\" button");
-        Assert.assertTrue(registerPage.getFormErrorMessage().contains("There're errors in the form. Please correct the errors and try again.")
-                && registerPage.getErrorMessagePassword().contains("Invalid password length.")
-                && registerPage.getErrorMessageConfirmPassword().contains("Invalid ID length."));
+        Assert.assertTrue(registerPage.getFormErrorMessage().contains(Message.WRONGINPUT.getMessage())
+                && registerPage.getErrorMessagePassword().contains(Message.INVALIDPASSLENGTH.getMessage())
+                && registerPage.getErrorMessagePIDPassword().contains(Message.INVALIDIDLENGTH.getMessage()));
     }
 
 }

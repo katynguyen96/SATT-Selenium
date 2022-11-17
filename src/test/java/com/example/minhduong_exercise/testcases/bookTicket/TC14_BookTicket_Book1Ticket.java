@@ -7,6 +7,7 @@ import com.example.minhduong_exercise.pageObjects.railway.*;
 import com.example.minhduong_exercise.testcases.BaseTestSetUp;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 public class TC14_BookTicket_Book1Ticket extends BaseTestSetUp {
 
@@ -19,16 +20,16 @@ public class TC14_BookTicket_Book1Ticket extends BaseTestSetUp {
         Log.info("Register new account");
 
         LoginPage loginPage = new LoginPage();
-        loginPage.tabNavigate(Tab.LOGIN).click();
+        loginPage.tabNavigate(Tab.LOGIN);
         loginPage.loginAccount(getEmail(), getPassword());
         Log.info("Login with new account");
 
         BookTicketPage bookTicketPage = new BookTicketPage();
-        bookTicketPage.tabNavigate(Tab.BOOKTICKET).click();
+        bookTicketPage.tabNavigate(Tab.BOOKTICKET);
         Log.info("Click on \"Book ticket\" tab");
 
         String departDateValue = Utilities.generateRandomNumberDepartDate();
-        String departDate = bookTicketPage.departDate(departDateValue);
+        String departDate = bookTicketPage.getDepartDateValue(departDateValue);
         bookTicketPage.bookTicket(departDateValue, Station.SAIGON, Station.NHATRANG, SeatType.SBWAC, "1");
         Log.info("Select a \"Depart date\" from the list");
         Log.info("Select \"Sài Gòn\" for \"Depart from\" and \"Nha Trang\" for \"Arrive at\".");
@@ -36,16 +37,18 @@ public class TC14_BookTicket_Book1Ticket extends BaseTestSetUp {
         Log.info(" Select \"1\" for \"Ticket amount\"");
         Log.info("Click on \"Book ticket\" button");
         SuccessPage successPage = new SuccessPage();
-        String departStationValue = successPage.getRow("Depart Station");
-        String arriveStationValue = successPage.getRow("Arrive Station");
-        String seatTypeValue = successPage.getRow("Seat Type");
-        String dateValue = successPage.getRow("Depart Date");
-        String amountValue = successPage.getRow("Amount");
-        Assert.assertEquals(bookTicketPage.getSuccessTitleValue(), "Ticket Booked Successfully!");
-        Assert.assertTrue(departStationValue.contains(Station.SAIGON.getTabName())
-                && arriveStationValue.contains(Station.NHATRANG.getTabName())
-                && seatTypeValue.contains(SeatType.SBWAC.getTabName())
-                && amountValue.contains("1")
-                && dateValue.contains(departDate));
+        String departStationValue = successPage.getRowValue("Depart Station");
+        String arriveStationValue = successPage.getRowValue("Arrive Station");
+        String seatTypeValue = successPage.getRowValue("Seat Type");
+        String dateValue = successPage.getRowValue("Depart Date");
+        String amountValue = successPage.getRowValue("Amount");
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(bookTicketPage.getSuccessTitleValue(), Message.BOOKTICKETSUCCESS.getMessage());
+        softAssert.assertEquals(departStationValue,Station.SAIGON.getStation());
+        softAssert.assertEquals(arriveStationValue,Station.NHATRANG.getStation());
+        softAssert.assertEquals(seatTypeValue,SeatType.SBWAC.getSeatType());
+        softAssert.assertEquals(amountValue,"1");
+        softAssert.assertEquals(dateValue,departDate);
+        softAssert.assertAll();
     }
 }
