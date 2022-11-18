@@ -16,7 +16,7 @@ public class BookTicketPage extends BasePage {
     private final By ddlArriveStation = By.xpath("//select[@name='ArriveStation']");
     private final By ddlSeatType = By.xpath("//select[@name='SeatType']");
     private final By ddlTicketAmount = By.xpath("//select[@name='TicketAmount']");
-    private final By successTitle = By.xpath("//h1");
+    private final By lblSuccessTitle = By.xpath("//h1");
 
 
     //Element
@@ -50,8 +50,8 @@ public class BookTicketPage extends BasePage {
     }
 
 
-    protected WebElement getSuccessTitle() {
-        return DriverManager.getDriver().findElement(successTitle);
+    protected WebElement getLblSuccessTitle() {
+        return DriverManager.getDriver().findElement(lblSuccessTitle);
     }
 
     protected WebElement departDate(String value) {
@@ -68,7 +68,7 @@ public class BookTicketPage extends BasePage {
 
     //Method
     public String getSuccessTitleValue() {
-        return getSuccessTitle().getText();
+        return getLblSuccessTitle().getText();
     }
 
     public Select getDdlDepartDateSelect() {
@@ -102,7 +102,7 @@ public class BookTicketPage extends BasePage {
         getBtnBookTicket().click();
     }
 
-    public String getSelectedDepartSationValue() {
+    public String getSelectedDepartStationValue() {
         return getSelectedDepartStation().getText();
     }
 

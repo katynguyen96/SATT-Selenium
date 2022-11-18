@@ -6,8 +6,8 @@ import com.example.minhduong_exercise.common.constant.Tab;
 import com.example.minhduong_exercise.common.utilities.logs.Log;
 import com.example.minhduong_exercise.pageObjects.railway.RegisterPage;
 import com.example.minhduong_exercise.testcases.BaseTestSetUp;
-import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 public class TC11_Register_EmptyPassword_ID extends BaseTestSetUp {
 
@@ -25,9 +25,11 @@ public class TC11_Register_EmptyPassword_ID extends BaseTestSetUp {
         registerPage.registerAccount(email, "", confirmPassword, "");
         Log.info("Enter valid email address and leave other fields empty");
         Log.info(" Click on \"Register\" button");
-        Assert.assertTrue(registerPage.getFormErrorMessage().contains(Message.WRONGINPUT.getMessage())
-                && registerPage.getErrorMessagePassword().contains(Message.INVALIDPASSLENGTH.getMessage())
-                && registerPage.getErrorMessagePIDPassword().contains(Message.INVALIDIDLENGTH.getMessage()));
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(registerPage.getFormErrorMessage(), Message.WRONGINPUT.getMessage());
+        softAssert.assertEquals(registerPage.getErrorMessagePassword(), Message.INVALIDPASSLENGTH.getMessage());
+        softAssert.assertEquals(registerPage.getErrorMessagePIDPassword(), Message.INVALIDIDLENGTH.getMessage());
+        softAssert.assertAll();
     }
 
 }

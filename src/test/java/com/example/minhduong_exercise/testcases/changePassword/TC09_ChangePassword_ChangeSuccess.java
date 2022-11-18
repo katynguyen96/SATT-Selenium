@@ -6,7 +6,6 @@ import com.example.minhduong_exercise.common.constant.Tab;
 import com.example.minhduong_exercise.common.utilities.logs.Log;
 import com.example.minhduong_exercise.pageObjects.railway.ChangePasswordPage;
 import com.example.minhduong_exercise.pageObjects.railway.LoginPage;
-import com.example.minhduong_exercise.pageObjects.railway.RegisterPage;
 import com.example.minhduong_exercise.testcases.BaseTestSetUp;
 import org.testng.Assert;
 import org.testng.annotations.Test;

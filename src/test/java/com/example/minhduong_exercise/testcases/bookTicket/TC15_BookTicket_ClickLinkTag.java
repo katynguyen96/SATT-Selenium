@@ -32,7 +32,7 @@ public class TC15_BookTicket_ClickLinkTag extends BaseTestSetUp {
         Log.info(" Click on \"book ticket\" link of the route from \"Huế\" to \"Sài Gòn\"");
 
         BookTicketPage bookTicketPage = new BookTicketPage();
-        String selectedDepartStation = bookTicketPage.getSelectedDepartSationValue();
+        String selectedDepartStation = bookTicketPage.getSelectedDepartStationValue();
         String selectedArriveStation = bookTicketPage.getSelectedArriveStationValue();
 
         SoftAssert softassert = new SoftAssert();

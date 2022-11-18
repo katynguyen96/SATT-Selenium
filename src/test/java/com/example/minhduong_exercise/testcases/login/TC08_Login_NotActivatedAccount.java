@@ -32,5 +32,4 @@ public class TC08_Login_NotActivatedAccount extends BaseTestSetUp {
         Assert.assertEquals(loginPageUrl, Url.LOGIN.getUrl());
         Assert.assertEquals(loginPage.getErrorMessageInvalidAccount(), Message.WRONGACCOUNT.getMessage());
     }
-
 }
