@@ -10,7 +10,7 @@ public class ChangePasswordPage extends BasePage {
     private final By txtNewPassword = By.xpath("//input[@id='newPassword']");
     private final By txtConfirmPassword = By.xpath("//input[@id='confirmPassword']");
     private final By btnChangePassword = By.xpath("//input[@type='submit' and @value='Change Password']");
-    private final By pSuccessMessage = By.xpath("//form[@id='ChangePW']//p[@class='message success']");
+    private final By lblSuccessMessage = By.xpath("//form[@id='ChangePW']//p[@class='message success']");
 
 
     //Element
@@ -30,20 +30,20 @@ public class ChangePasswordPage extends BasePage {
         return DriverManager.getDriver().findElement(btnChangePassword);
     }
 
-    protected WebElement getpSuccessMessage() {
-        return DriverManager.getDriver().findElement(pSuccessMessage);
+    protected WebElement getLblSuccessMessage() {
+        return DriverManager.getDriver().findElement(lblSuccessMessage);
     }
 
 
     //Method
     public String getSuccessMessage() {
-        return getpSuccessMessage().getText();
+        return getLblSuccessMessage().getText();
     }
 
-    public void ChangePassword(String curPass, String newPass, String confrimPass) {
+    public void ChangePassword(String curPass, String newPass, String confirmPass) {
         getTxtCurrentPassword().sendKeys(curPass);
         getTxtNewPassword().sendKeys(newPass);
-        getTxtConfirmPassword().sendKeys(confrimPass);
+        getTxtConfirmPassword().sendKeys(confirmPass);
         getBtnChangePassword().click();
     }
 }

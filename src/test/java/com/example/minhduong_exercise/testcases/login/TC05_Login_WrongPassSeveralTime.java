@@ -2,7 +2,6 @@ package com.example.minhduong_exercise.testcases.login;
 
 import com.example.minhduong_exercise.common.constant.Message;
 import com.example.minhduong_exercise.common.constant.Tab;
-import com.example.minhduong_exercise.common.utilities.listener.ReportListener;
 import com.example.minhduong_exercise.common.utilities.logs.Log;
 import com.example.minhduong_exercise.dataProvider.ConfigFileReader;
 import com.example.minhduong_exercise.pageObjects.railway.LoginPage;
