@@ -1,7 +1,7 @@
 package com.example.minhduong_exercise.testcases.bookTicket;
 
-import com.example.minhduong_exercise.common.constant.Station;
-import com.example.minhduong_exercise.common.constant.Tab;
+import com.example.minhduong_exercise.dataObjects.Station;
+import com.example.minhduong_exercise.dataObjects.Tab;
 import com.example.minhduong_exercise.common.utilities.logs.Log;
 import com.example.minhduong_exercise.pageObjects.railway.BookTicketPage;
 import com.example.minhduong_exercise.pageObjects.railway.LoginPage;
@@ -12,9 +12,9 @@ import org.testng.asserts.SoftAssert;
 
 public class TC15_BookTicket_ClickLinkTag extends BaseTestSetUp {
 
-    @Test
+    @Test(description = "TC15_User can open \"Book ticket\" page by clicking on \"Book ticket\" link in \"Train timetable\" page")
     public void TC15_Click_Book_ticket_LinkTag() {
-        System.out.println("TC15_User can open \"Book ticket\" page by clicking on \"Book ticket\" link in \"Train timetable\" page");
+        Log.info("TC15_User can open \"Book ticket\" page by clicking on \"Book ticket\" link in \"Train timetable\" page");
         Log.info("Pre-condition: Create and activate a new account");
         Log.info("Navigate to QA Railway Website");
         registerAccount();

@@ -18,44 +18,44 @@ public class RegisterPage extends BasePage {
 
 
     //Element
-    protected WebElement getTxtEmail() {
+    private WebElement getTxtEmail() {
         return DriverManager.getDriver().findElement(txtEmail);
     }
 
-    protected WebElement getTxtPassword() {
+    private WebElement getTxtPassword() {
         return DriverManager.getDriver().findElement(txtPassword);
     }
 
 
-    protected WebElement getTxtConfirmPassword() {
+    private WebElement getTxtConfirmPassword() {
         return DriverManager.getDriver().findElement(txtConfirmPassword);
     }
 
 
-    protected WebElement getTxtPID() {
+    private WebElement getTxtPID() {
         return DriverManager.getDriver().findElement(txtPID);
     }
 
 
-    protected WebElement getBtnRegister() {
+    private WebElement getBtnRegister() {
         return DriverManager.getDriver().findElement(btnRegister);
     }
 
 
-    protected WebElement getLblRegisterSuccessMessage() {
+    private WebElement getLblRegisterSuccessMessage() {
         return DriverManager.getDriver().findElement(lblRegisterSuccessMessage);
     }
 
-    protected WebElement getLblErrorMessagePIDPassword() {
+    private WebElement getLblErrorMessagePIDPassword() {
         return DriverManager.getDriver().findElement(lblErrorMessagePIDPassword);
 
     }
 
-    protected WebElement getLblErrorMessagePassword() {
+    private WebElement getLblErrorMessagePassword() {
         return DriverManager.getDriver().findElement(lblErrorMessagePassword);
     }
 
-    protected WebElement getLblFormErrorMessage() {
+    private WebElement getLblFormErrorMessage() {
         return DriverManager.getDriver().findElement(lblFormErrorMessage);
     }
 

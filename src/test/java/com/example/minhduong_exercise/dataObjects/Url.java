@@ -1,4 +1,4 @@
-package com.example.minhduong_exercise.common.constant;
+package com.example.minhduong_exercise.dataObjects;
 
 public enum Url {
     HOMEPAGE("http://railwayb2.somee.com/Page/HomePage.cshtml"),

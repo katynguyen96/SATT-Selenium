@@ -15,12 +15,12 @@ public class Utilities {
     }
 
     public static String generateRandomString(int len) {
-        return  RandomStringUtils.randomAlphanumeric(len);
+        return RandomStringUtils.randomAlphanumeric(len);
     }
 
 
     public static String generateRandomNumberDepartDate() {
-        int randomDate = 3 + (int) (Math.random() * (30 - 4)+1);
+        int randomDate = 3 + (int) (Math.random() * (30 - 4) + 1);
         return Integer.toString(randomDate);
     }
 }

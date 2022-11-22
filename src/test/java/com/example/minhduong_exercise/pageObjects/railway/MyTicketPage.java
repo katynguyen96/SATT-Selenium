@@ -2,42 +2,28 @@ package com.example.minhduong_exercise.pageObjects.railway;
 
 import com.example.minhduong_exercise.common.utilities.DriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
-import java.util.List;
 
 public class MyTicketPage extends BasePage {
-    private final By btnCancel = By.xpath("//input[@value='Cancel']");
-    private final By tblTicket = By.xpath("//div[@id='content']//div[@class='DivTable']//table");
-    private String deletedTicketID;
+    private final String cancelButton = "//input[@value='Cancel' and contains(@onclick,'%s')]";
 
-    protected WebElement getBtnCancel() {
-        return DriverManager.getDriver().findElement(btnCancel);
+    private WebElement getBtnCancel(String id) {
+        return DriverManager.getDriver().findElement(By.xpath(String.format(cancelButton, id)));
     }
 
-
-    public String getDeletedTicketID() {
-        return deletedTicketID;
+    public void deleteTicket(String id) {
+        DriverManager.scrollToView(getBtnCancel(id));
+        getBtnCancel(id).click();
     }
 
-    public Boolean isTableDisplayed() {
-        return DriverManager.getDriver().findElements(tblTicket).isEmpty();
-    }
-
-    public void deleteTicket() {
-        DriverManager.scrollToView(getBtnCancel());
-        deletedTicketID = getBtnCancel().getAttribute("onclick");
-        deletedTicketID = deletedTicketID.substring(deletedTicketID.indexOf("(") + 1, deletedTicketID.indexOf(")"));
-        getBtnCancel().click();
-    }
-
-    public String getNextTicketID() {
-        List<WebElement> ticketRemain = DriverManager.getDriver().findElements(btnCancel);
-        if (ticketRemain.size() != 0) {
-            DriverManager.scrollToView(getBtnCancel());
-            String nextTicketID = getBtnCancel().getAttribute("onclick");
-            nextTicketID = nextTicketID.substring(nextTicketID.indexOf("(") + 1, nextTicketID.indexOf(")"));
-            return nextTicketID;
-        } else return null;
+    public boolean isTicketDisplayed(String id) {
+        try {
+            getBtnCancel(id);
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.example.minhduong_exercise.common.constant;
+package com.example.minhduong_exercise.dataObjects;
 
 public enum SeatType {
     HS("Hard seat"),
