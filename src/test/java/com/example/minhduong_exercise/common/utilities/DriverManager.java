@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
 public class DriverManager {
 
@@ -29,49 +29,49 @@ public class DriverManager {
     public static void setupDriver(String browserType) {
         switch (browserType.trim().toLowerCase()) {
             case "chrome":
-                driver = initChromeDriver();
+                initChromeDriver();
                 break;
             case "firefox":
-                driver = initFirefoxDriver();
+                initFirefoxDriver();
                 break;
             default:
                 System.out.println("Browser: " + browserType + " is invalid, Launching Chrome as browser of choice...");
-                driver = initChromeDriver();
+                initChromeDriver();
         }
     }
 
-    public static void maximizeWindow() {
+    private static void setupBrowser(){
+        maximizeWindow();
+        pageLoadTimeout();
+        implicitlyWait();
+    }
+
+    private static void maximizeWindow() {
         driver.manage().window().maximize();
     }
 
-    public static void pageLoadTimeout() {
-        driver.manage().timeouts().pageLoadTimeout(configFileReader.getPageloadTimeout(), TimeUnit.SECONDS);
+    private static void pageLoadTimeout() {
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(configFileReader.getPageloadTimeout()));
     }
 
-    public static void implicitlyWait() {
-        driver.manage().timeouts().implicitlyWait(configFileReader.getImplicitlyWait(), TimeUnit.SECONDS);
+    private static void implicitlyWait() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(configFileReader.getImplicitlyWait()));
     }
 
-    private static WebDriver initChromeDriver() {
+    private static void initChromeDriver() {
         System.out.println("Launching Chrome browser...");
         System.setProperty("webdriver.chrome.driver", Utilities.getProjectPath() + "\\Executables\\chromedriver.exe");
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        maximizeWindow();
-        pageLoadTimeout();
-        implicitlyWait();
-        return driver;
+        setupBrowser();
     }
 
-    private static WebDriver initFirefoxDriver() {
+    private static void initFirefoxDriver() {
         System.out.println("Launching Firefox browser...");
         System.setProperty("webdriver.gecko.driver", Utilities.getProjectPath() + "\\Executables\\geckodriver.exe");
         WebDriverManager.firefoxdriver().setup();
         driver = new FirefoxDriver();
-        maximizeWindow();
-        pageLoadTimeout();
-        implicitlyWait();
-        return driver;
+        setupBrowser();
     }
 
     public static void scrollToView(WebElement element) {

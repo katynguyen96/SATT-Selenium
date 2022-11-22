@@ -7,7 +7,8 @@ import com.example.minhduong_exercise.dataProvider.ConfigFileReader;
 import com.example.minhduong_exercise.pageObjects.railway.LoginPage;
 import com.example.minhduong_exercise.testcases.BaseTestSetUp;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.Test;
+
 
 public class TC01_Login_ValidAccount extends BaseTestSetUp {
     ConfigFileReader configFileReader = new ConfigFileReader();
@@ -23,7 +24,6 @@ public class TC01_Login_ValidAccount extends BaseTestSetUp {
         Log.info("Enter email: " + configFileReader.getUsername());
         Log.info("Enter password: " + configFileReader.getPassword());
         Log.info("Click on \"Login\" button");
-        Assert.assertEquals(loginPage.getWelcomeText(), Message.WC.getMessage());
+        Assert.assertEquals(loginPage.getWelcomeText(), Message.WELCOME.getMessage());
     }
-
 }

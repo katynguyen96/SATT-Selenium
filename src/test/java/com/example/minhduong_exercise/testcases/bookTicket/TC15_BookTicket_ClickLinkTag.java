@@ -7,7 +7,6 @@ import com.example.minhduong_exercise.pageObjects.railway.BookTicketPage;
 import com.example.minhduong_exercise.pageObjects.railway.LoginPage;
 import com.example.minhduong_exercise.pageObjects.railway.TimetablePage;
 import com.example.minhduong_exercise.testcases.BaseTestSetUp;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -33,7 +32,7 @@ public class TC15_BookTicket_ClickLinkTag extends BaseTestSetUp {
         Log.info(" Click on \"book ticket\" link of the route from \"Huế\" to \"Sài Gòn\"");
 
         BookTicketPage bookTicketPage = new BookTicketPage();
-        String selectedDepartStation = bookTicketPage.getSelectedDepartSationValue();
+        String selectedDepartStation = bookTicketPage.getSelectedDepartStationValue();
         String selectedArriveStation = bookTicketPage.getSelectedArriveStationValue();
 
         SoftAssert softassert = new SoftAssert();

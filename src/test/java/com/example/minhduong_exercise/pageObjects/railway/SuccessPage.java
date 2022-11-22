@@ -11,6 +11,6 @@ public class SuccessPage extends BasePage {
 
     public String getRowValue(String value) {
         return getRow(value).getText();
-    }
 
+    }
 }

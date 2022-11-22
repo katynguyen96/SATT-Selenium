@@ -5,7 +5,6 @@ import com.example.minhduong_exercise.common.utilities.logs.Log;
 import com.example.minhduong_exercise.dataProvider.ConfigFileReader;
 import com.example.minhduong_exercise.pageObjects.railway.LoginPage;
 import com.example.minhduong_exercise.testcases.BaseTestSetUp;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -21,7 +20,7 @@ public class TC06_Login_MenuDisplayProperly extends BaseTestSetUp {
         Log.info("Click on \"Login\" tab");
         loginPage.loginAccount(configFileReader.getUsername(), configFileReader.getPassword());
         Log.info("Login with valid account");
-        SoftAssert softAssert =  new SoftAssert();
+        SoftAssert softAssert = new SoftAssert();
         softAssert.assertTrue(loginPage.isTabDisplayed("My ticket"));
         softAssert.assertTrue(loginPage.isTabDisplayed("Change password"));
         softAssert.assertTrue(loginPage.isTabDisplayed("Log out"));

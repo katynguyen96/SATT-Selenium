@@ -9,8 +9,9 @@ import org.testng.annotations.BeforeMethod;
 
 public class BaseTestSetUp {
 
-    private  String email;
+    private String email;
     private String password;
+
     @BeforeMethod
     public void setUp() {
         DriverManager.open();
@@ -21,14 +22,15 @@ public class BaseTestSetUp {
         DriverManager.close();
     }
 
-    public String getEmail(){
+    public String getEmail() {
         return email;
     }
 
-    public String getPassword(){
+    public String getPassword() {
         return password;
     }
-    public void registerAccount(){
+
+    public void registerAccount() {
         RegisterPage registerPage = new RegisterPage();
         registerPage.tabNavigate(Tab.REGISTER);
         email = Utilities.generateRandomEmail(8);

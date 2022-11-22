@@ -11,10 +11,10 @@ public class RegisterPage extends BasePage {
     private final By txtConfirmPassword = By.xpath("//input[@id='confirmPassword']");
     private final By txtPID = By.xpath("//input[@id='pid']");
     private final By btnRegister = By.xpath("//form[@id='RegisterForm']//input[@type='submit']");
-    private final By pRegisterSuccessMessage = By.xpath("//div[@id='content']/p");
+    private final By lblRegisterSuccessMessage = By.xpath("//div[@id='content']/p");
     private final By lblErrorMessagePIDPassword = By.xpath("//label[@for='pid' and contains(@class,'validation-error')]");
     private final By lblErrorMessagePassword = By.xpath("//label[@for='password' and contains(@class,'validation-error')]");
-    private final By pFormErrorMessage = By.xpath("//div[@id='content']//p[contains(@class,'message error')]");
+    private final By lblFormErrorMessage = By.xpath("//div[@id='content']//p[contains(@class,'message error')]");
 
 
     //Element
@@ -42,8 +42,8 @@ public class RegisterPage extends BasePage {
     }
 
 
-    protected WebElement getpRegisterSuccessMessage() {
-        return DriverManager.getDriver().findElement(pRegisterSuccessMessage);
+    protected WebElement getLblRegisterSuccessMessage() {
+        return DriverManager.getDriver().findElement(lblRegisterSuccessMessage);
     }
 
     protected WebElement getLblErrorMessagePIDPassword() {
@@ -55,14 +55,14 @@ public class RegisterPage extends BasePage {
         return DriverManager.getDriver().findElement(lblErrorMessagePassword);
     }
 
-    protected WebElement getpFormErrorMessage() {
-        return DriverManager.getDriver().findElement(pFormErrorMessage);
+    protected WebElement getLblFormErrorMessage() {
+        return DriverManager.getDriver().findElement(lblFormErrorMessage);
     }
 
 
     //Method
     public String getRegisterSuccessMessage() {
-        return getpRegisterSuccessMessage().getText();
+        return getLblRegisterSuccessMessage().getText();
     }
 
 
@@ -77,7 +77,7 @@ public class RegisterPage extends BasePage {
 
 
     public String getFormErrorMessage() {
-        return getpFormErrorMessage().getText();
+        return getLblFormErrorMessage().getText();
     }
 
     public void registerAccount(String email, String password, String confirmPassword, String PID) {

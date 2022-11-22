@@ -21,6 +21,6 @@ public class TC02_Login_EmptyUsername extends BaseTestSetUp {
         Log.info("Click on \"Login\" tab");
         loginPage.loginAccount("", configFileReader.getPassword());
         Log.info("Enter password: " + configFileReader.getPassword());
-        Assert.assertEquals(loginPage.getFormErrorMessage(), Message.FORMERR.getMessage());
+        Assert.assertEquals(loginPage.getFormErrorMessage(), Message.FORMERROR.getMessage());
     }
 }

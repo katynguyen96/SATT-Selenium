@@ -5,14 +5,13 @@ import com.example.minhduong_exercise.common.constant.*;
 import com.example.minhduong_exercise.common.utilities.logs.Log;
 import com.example.minhduong_exercise.pageObjects.railway.*;
 import com.example.minhduong_exercise.testcases.BaseTestSetUp;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 public class TC14_BookTicket_Book1Ticket extends BaseTestSetUp {
 
     @Test
-    public void TC14_UnLoggedUser() {
+    public void TC14_Book_1_Ticket() {
         System.out.println("TC14_User can book 1 ticket at a time");
         Log.info("Pre-condition: Create and activate a new account");
         Log.info(" Navigate to QA Railway Website");

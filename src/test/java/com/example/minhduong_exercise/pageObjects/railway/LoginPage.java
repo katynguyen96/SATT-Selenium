@@ -11,8 +11,8 @@ public class LoginPage extends BasePage {
     private final By txtPassword = By.xpath("//input[@id='password']");
     private final By btnLogin = By.xpath("//input[@type='submit']");
     private final By stWelcomeText = By.xpath("//div[@class='account']/strong");
-    private final By pErrorMessageInvalidAccount = By.xpath("//div[@id='content']/p[contains(@class,'message error')]");
-    private final By pFormErrorMessage = By.xpath("//div[@id='content']//p[contains(@class,'message error')]");
+    private final By lblErrorMessageInvalidAccount = By.xpath("//div[@id='content']/p[contains(@class,'message error')]");
+    private final By lblFormErrorMessage = By.xpath("//div[@id='content']//p[contains(@class,'message error')]");
     private final By mnuTabMenu = By.xpath("//div[@id='menu']");
 
 
@@ -33,31 +33,30 @@ public class LoginPage extends BasePage {
         return DriverManager.getDriver().findElement(stWelcomeText);
     }
 
-    protected WebElement getpFormErrorMessage() {
-        return DriverManager.getDriver().findElement(pFormErrorMessage);
+    protected WebElement getLblFormErrorMessage() {
+        return DriverManager.getDriver().findElement(lblFormErrorMessage);
     }
 
     protected WebElement getMnuTabMenu() {
         return DriverManager.getDriver().findElement(mnuTabMenu);
     }
 
-    protected WebElement getpErrorMessageInvalidAccount() {
-        return DriverManager.getDriver().findElement(pErrorMessageInvalidAccount);
+    protected WebElement getLblErrorMessageInvalidAccount() {
+        return DriverManager.getDriver().findElement(lblErrorMessageInvalidAccount);
     }
 
 
     //Method
     public String getErrorMessageInvalidAccount() {
-        return getpErrorMessageInvalidAccount().getText();
+        return getLblErrorMessageInvalidAccount().getText();
     }
 
     public String getWelcomeText() {
         return getStWelcomeText().getText();
     }
 
-
     public String getFormErrorMessage() {
-        return getpFormErrorMessage().getText();
+        return getLblFormErrorMessage().getText();
     }
 
 
