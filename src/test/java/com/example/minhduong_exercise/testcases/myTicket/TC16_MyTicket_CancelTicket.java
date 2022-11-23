@@ -1,6 +1,5 @@
 package com.example.minhduong_exercise.testcases.myTicket;
 
-import com.example.minhduong_exercise.common.constant.AssertMessage;
 import com.example.minhduong_exercise.dataObjects.SeatType;
 import com.example.minhduong_exercise.dataObjects.Station;
 import com.example.minhduong_exercise.dataObjects.Tab;
@@ -43,6 +42,6 @@ public class TC16_MyTicket_CancelTicket extends BaseTestSetUp {
         myTicketPage.deleteTicket(ticketID);
         Log.info(" Click on \"OK\" button on Confirmation message \"Are you sure?\"");
         DriverManager.alertAccept();
-        Assert.assertFalse(myTicketPage.isTicketDisplayed(ticketID), AssertMessage.ELEMENT_DISPLAY.getAssertMessage());
+        Assert.assertFalse(myTicketPage.isTicketDisplayed(ticketID), "Ticket ID: "+ticketID+" is display on UI");
     }
 }
