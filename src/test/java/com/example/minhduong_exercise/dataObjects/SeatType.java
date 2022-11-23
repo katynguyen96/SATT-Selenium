@@ -3,10 +3,10 @@ package com.example.minhduong_exercise.dataObjects;
 public enum SeatType {
     HS("Hard seat"),
     SS("Soft seat"),
-    SSWAC("Soft seat with air conditioner"),
+    SSC("Soft seat with air conditioner"),
     HB("Hard bed"),
     SB("Soft bed"),
-    SBWAC("Soft bed with air conditioner");
+    SBC("Soft bed with air conditioner");
 
     public final String seatType;
 

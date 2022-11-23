@@ -17,22 +17,22 @@ public class TC09_ChangePassword_ChangeSuccess extends BaseTestSetUp {
         Log.info("TC09_User can change password");
         Log.info("Pre-condition: Create and activate a new account");
 
-        registerAccount();
         Log.info("Create new account");
+        registerRandomAccount();
 
         LoginPage loginPage = new LoginPage();
         loginPage.tabNavigate(Tab.LOGIN);
-        loginPage.loginAccount(getEmail(), getPassword());
         Log.info("Login with new account");
+        loginPage.loginAccount(getEmail(), getPassword());
 
         ChangePasswordPage changePasswordPage = new ChangePasswordPage();
-        changePasswordPage.tabNavigate(Tab.CHANGEPASS);
         Log.info("Click on \"Change Password\" tab");
+        changePasswordPage.tabNavigate(Tab.CHANGE_PASSWORD);
         String newPass = Utilities.generateRandomString(8);
-        changePasswordPage.ChangePassword(getPassword(), newPass, newPass);
         Log.info("Enter valid value into all fields.");
         Log.info("Click on \"Change Password\" button");
-        Assert.assertTrue(changePasswordPage.getSuccessMessage().contains(Message.CHANGEPASSSUCCESS.getMessage()));
+        changePasswordPage.ChangePassword(getPassword(), newPass, newPass);
+        Assert.assertEquals(changePasswordPage.getSuccessMessage(),Message.CHANGE_PASS_SUCCESS.getMessage());
     }
 
 }

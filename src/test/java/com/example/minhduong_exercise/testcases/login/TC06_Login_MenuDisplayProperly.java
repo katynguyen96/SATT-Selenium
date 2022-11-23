@@ -1,5 +1,6 @@
 package com.example.minhduong_exercise.testcases.login;
 
+import com.example.minhduong_exercise.common.constant.AssertMessage;
 import com.example.minhduong_exercise.dataObjects.Tab;
 import com.example.minhduong_exercise.common.utilities.logs.Log;
 import com.example.minhduong_exercise.common.utilities.reader.ConfigFileReader;
@@ -16,14 +17,14 @@ public class TC06_Login_MenuDisplayProperly extends BaseTestSetUp {
         Log.info("TC06_Test UI tab menu after login");
         Log.info("Navigate to QA Railway Website");
         LoginPage loginPage = new LoginPage();
-        loginPage.tabNavigate(Tab.LOGIN);
         Log.info("Click on \"Login\" tab");
-        loginPage.loginAccount(configFileReader.getUsername(), configFileReader.getPassword());
+        loginPage.tabNavigate(Tab.LOGIN);
         Log.info("Login with valid account");
+        loginPage.loginAccount(configFileReader.getUsername(), configFileReader.getPassword());
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertTrue(loginPage.isTabDisplayed("My ticket"));
-        softAssert.assertTrue(loginPage.isTabDisplayed("Change password"));
-        softAssert.assertTrue(loginPage.isTabDisplayed("Log out"));
+        softAssert.assertTrue(loginPage.isTabDisplayed("My ticket"), AssertMessage.ELEMENT_NOT_DISPLAY.getAssertMessage());
+        softAssert.assertTrue(loginPage.isTabDisplayed("Change password"), AssertMessage.ELEMENT_NOT_DISPLAY.getAssertMessage());
+        softAssert.assertTrue(loginPage.isTabDisplayed("Log out"), AssertMessage.ELEMENT_NOT_DISPLAY.getAssertMessage());
         softAssert.assertAll();
     }
 }

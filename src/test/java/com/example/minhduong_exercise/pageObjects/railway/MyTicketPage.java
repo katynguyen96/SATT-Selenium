@@ -20,8 +20,7 @@ public class MyTicketPage extends BasePage {
 
     public boolean isTicketDisplayed(String id) {
         try {
-            getBtnCancel(id);
-            return true;
+            return getBtnCancel(id).findElement(By.xpath("/ancestor::tr")).isDisplayed();
         } catch (NoSuchElementException e) {
             return false;
         }

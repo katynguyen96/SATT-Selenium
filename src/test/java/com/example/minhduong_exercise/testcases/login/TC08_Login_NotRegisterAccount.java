@@ -17,13 +17,13 @@ public class TC08_Login_NotRegisterAccount extends BaseTestSetUp {
         Log.info("Click on \"Register\" tab");
 
         LoginPage loginPage = new LoginPage();
-        loginPage.tabNavigate(Tab.LOGIN);
         Log.info(" Click on \"Login\" tab");
+        loginPage.tabNavigate(Tab.LOGIN);
         String email = Utilities.generateRandomEmail(8);
         String password = Utilities.generateRandomString(8);
-        loginPage.loginAccount(email, password);
         Log.info(" Enter account hasn't been registered.");
         Log.info("Click on \"Login\" button");
-        Assert.assertEquals(loginPage.getErrorMessageInvalidAccount(), Message.WRONGACCOUNT.getMessage());
+        loginPage.loginAccount(email, password);
+        Assert.assertEquals(loginPage.getErrorMessageInvalidAccount(), Message.WRONG_ACCOUNT.getMessage());
     }
 }
