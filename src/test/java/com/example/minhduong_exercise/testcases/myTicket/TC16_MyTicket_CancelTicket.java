@@ -36,11 +36,11 @@ public class TC16_MyTicket_CancelTicket extends BaseTestSetUp {
         bookTicketPage.bookTicket(departDateValue, Station.SAI_GON, Station.NHA_TRANG, SeatType.SBC, "1");
         String ticketID = successPage.getTicketID();
 
-        Log.info("Click on \"My ticket\" tab");
+        Log.info("Click on 'My ticket' tab");
         myTicketPage.tabNavigate(Tab.MY_TICKET);
-        Log.info("Click on \"Cancel\" button of ticket which user want to cancel.");
+        Log.info("Click on 'Cancel' button of ticket which user want to cancel.");
         myTicketPage.deleteTicket(ticketID);
-        Log.info(" Click on \"OK\" button on Confirmation message \"Are you sure?\"");
+        Log.info("Click on 'OK' button on Confirmation message 'Are you sure?'");
         DriverManager.alertAccept();
         Assert.assertFalse(myTicketPage.isTicketDisplayed(ticketID), "Ticket ID: "+ticketID+" is display on UI");
     }

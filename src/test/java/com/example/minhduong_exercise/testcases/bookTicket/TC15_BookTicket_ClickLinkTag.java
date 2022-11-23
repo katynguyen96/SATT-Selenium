@@ -12,9 +12,9 @@ import org.testng.asserts.SoftAssert;
 
 public class TC15_BookTicket_ClickLinkTag extends BaseTestSetUp {
 
-    @Test(description = "TC15_User can open \"Book ticket\" page by clicking on \"Book ticket\" link in \"Train timetable\" page")
+    @Test(description = "TC15_User can open 'Book ticket' page by clicking on 'Book ticket' link in 'Train timetable' page")
     public void TC15_Click_Book_ticket_LinkTag() {
-        Log.info("TC15_User can open \"Book ticket\" page by clicking on \"Book ticket\" link in \"Train timetable\" page");
+        Log.info("TC15_User can open 'Book ticket' page by clicking on 'Book ticket' link in 'Train timetable' page");
         Log.info("Pre-condition: Create and activate a new account");
         Log.info("Navigate to QA Railway Website");
         Log.info("Register new account");
@@ -26,18 +26,20 @@ public class TC15_BookTicket_ClickLinkTag extends BaseTestSetUp {
         loginPage.loginAccount(getEmail(), getPassword());
 
         TimetablePage timetablePage = new TimetablePage();
-        Log.info("Click on \"Timetable\" tab");
+        Log.info("Click on 'Timetable' tab");
         timetablePage.tabNavigate(Tab.TIME_TABLE);
-        Log.info(" Click on \"book ticket\" link of the route from \"Huế\" to \"Sài Gòn\"");
-        timetablePage.clickLink(Station.HUE, Station.SAI_GON);
+        Station departStation = Station.HUE;
+        Station arriveStation = Station.SAI_GON;
+        Log.info("Click on 'book ticket' link of the route from "+departStation.getStation()+" to "+arriveStation.getStation()+"");
+        timetablePage.clickLink(departStation, arriveStation);
 
         BookTicketPage bookTicketPage = new BookTicketPage();
         String selectedDepartStation = bookTicketPage.getSelectedDepartStationValue();
         String selectedArriveStation = bookTicketPage.getSelectedArriveStationValue();
 
         SoftAssert softassert = new SoftAssert();
-        softassert.assertEquals(Station.HUE.getStation(), selectedDepartStation);
-        softassert.assertEquals(Station.SAI_GON.getStation(), selectedArriveStation);
+        softassert.assertEquals(departStation.getStation(), selectedDepartStation);
+        softassert.assertEquals(arriveStation.getStation(), selectedArriveStation);
         softassert.assertAll();
     }
 }

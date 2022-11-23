@@ -17,10 +17,10 @@ public class TC05_Login_WrongPassSeveralTime extends BaseTestSetUp {
         Log.info("TC05 - System shows message when user enters wrong password several times");
         Log.info("Navigate to QA Railway Website");
         LoginPage loginPage = new LoginPage();
-        Log.info("Click on \"Login\" tab");
+        Log.info("Click on 'Login' tab");
         loginPage.tabNavigate(Tab.LOGIN);
-        Log.info("Enter valid information into \"Username\" textbox except \"Password\" textbox.");
-        Log.info("Click on \"Login\" button");
+        Log.info("Enter valid information into 'Username' textbox except 'Password' textbox.");
+        Log.info("Click on 'Login' button");
         Log.info("Repeat step 3 three more times.");
         for (int i = 0; i < 4; i++) {
             loginPage.loginAccount(configFileReader.getUsername(), "123123123");
