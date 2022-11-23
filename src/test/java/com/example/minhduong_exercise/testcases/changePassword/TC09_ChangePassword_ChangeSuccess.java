@@ -1,8 +1,8 @@
 package com.example.minhduong_exercise.testcases.changePassword;
 
-import com.example.minhduong_exercise.common.constant.Message;
+import com.example.minhduong_exercise.dataObjects.Message;
 import com.example.minhduong_exercise.common.utilities.Utilities;
-import com.example.minhduong_exercise.common.constant.Tab;
+import com.example.minhduong_exercise.dataObjects.Tab;
 import com.example.minhduong_exercise.common.utilities.logs.Log;
 import com.example.minhduong_exercise.pageObjects.railway.ChangePasswordPage;
 import com.example.minhduong_exercise.pageObjects.railway.LoginPage;
@@ -12,9 +12,9 @@ import org.testng.annotations.Test;
 
 public class TC09_ChangePassword_ChangeSuccess extends BaseTestSetUp {
 
-    @Test
+    @Test(description = "TC09_User can change password")
     public void TC09_ChangePasswordSuccess() {
-        System.out.println("TC09_User can change password");
+        Log.info("TC09_User can change password");
         Log.info("Pre-condition: Create and activate a new account");
 
         registerAccount();

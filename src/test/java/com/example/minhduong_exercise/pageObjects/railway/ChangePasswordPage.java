@@ -14,23 +14,23 @@ public class ChangePasswordPage extends BasePage {
 
 
     //Element
-    protected WebElement getTxtCurrentPassword() {
+    private WebElement getTxtCurrentPassword() {
         return DriverManager.getDriver().findElement(txtCurrentPassword);
     }
 
-    protected WebElement getTxtNewPassword() {
+    private WebElement getTxtNewPassword() {
         return DriverManager.getDriver().findElement(txtNewPassword);
     }
 
-    protected WebElement getTxtConfirmPassword() {
+    private WebElement getTxtConfirmPassword() {
         return DriverManager.getDriver().findElement(txtConfirmPassword);
     }
 
-    protected WebElement getBtnChangePassword() {
+    private WebElement getBtnChangePassword() {
         return DriverManager.getDriver().findElement(btnChangePassword);
     }
 
-    protected WebElement getLblSuccessMessage() {
+    private WebElement getLblSuccessMessage() {
         return DriverManager.getDriver().findElement(lblSuccessMessage);
     }
 

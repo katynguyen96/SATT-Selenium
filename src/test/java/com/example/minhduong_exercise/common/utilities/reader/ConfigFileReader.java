@@ -1,4 +1,4 @@
-package com.example.minhduong_exercise.dataProvider;
+package com.example.minhduong_exercise.common.utilities.reader;
 
 import com.example.minhduong_exercise.common.utilities.Utilities;
 

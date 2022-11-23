@@ -5,12 +5,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class SuccessPage extends BasePage {
-    protected WebElement getRow(String value) {
-        return DriverManager.getDriver().findElement(By.xpath("//table[@class='MyTable WideTable']//td[count(//th[text()=" + "'" + value + "'" + "]/preceding-sibling::th)+1]"));
+    private final String rowTicketXpath = "//table[@class='MyTable WideTable']//td[count(//th[text()='%s']/preceding-sibling::th)+1]";
+
+    private WebElement getRow(String value) {
+        return DriverManager.getDriver().findElement(By.xpath(String.format(rowTicketXpath, value)));
     }
 
     public String getRowValue(String value) {
         return getRow(value).getText();
 
+    }
+
+    public String getTicketID() {
+        return DriverManager.getParamValue("id");
     }
 }

@@ -4,6 +4,7 @@ import com.example.minhduong_exercise.common.utilities.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+
 public class LoginPage extends BasePage {
 
     //Locator
@@ -15,33 +16,34 @@ public class LoginPage extends BasePage {
     private final By lblFormErrorMessage = By.xpath("//div[@id='content']//p[contains(@class,'message error')]");
     private final By mnuTabMenu = By.xpath("//div[@id='menu']");
 
+    private final String tabXpath = "//span[.='%s']";
 
     //Element
-    protected WebElement getTxtUsername() {
+    private WebElement getTxtUsername() {
         return DriverManager.getDriver().findElement(txtUsername);
     }
 
-    protected WebElement getTxtPassword() {
+    private WebElement getTxtPassword() {
         return DriverManager.getDriver().findElement(txtPassword);
     }
 
-    protected WebElement getBtnLogin() {
+    private WebElement getBtnLogin() {
         return DriverManager.getDriver().findElement(btnLogin);
     }
 
-    protected WebElement getStWelcomeText() {
+    private WebElement getStWelcomeText() {
         return DriverManager.getDriver().findElement(stWelcomeText);
     }
 
-    protected WebElement getLblFormErrorMessage() {
+    private WebElement getLblFormErrorMessage() {
         return DriverManager.getDriver().findElement(lblFormErrorMessage);
     }
 
-    protected WebElement getMnuTabMenu() {
+    private WebElement getMnuTabMenu() {
         return DriverManager.getDriver().findElement(mnuTabMenu);
     }
 
-    protected WebElement getLblErrorMessageInvalidAccount() {
+    private WebElement getLblErrorMessageInvalidAccount() {
         return DriverManager.getDriver().findElement(lblErrorMessageInvalidAccount);
     }
 
@@ -60,11 +62,11 @@ public class LoginPage extends BasePage {
     }
 
 
-    protected WebElement getTab(String tabName) {
-        return getMnuTabMenu().findElement(By.xpath("//span[.=" + "'" + tabName + "'" + "]"));
+    private WebElement getTab(String tabName) {
+        return getMnuTabMenu().findElement(By.xpath(String.format(tabXpath, tabName)));
     }
 
-    public Boolean isTabDisplayed(String tabName){
+    public Boolean isTabDisplayed(String tabName) {
         return getTab(tabName).isDisplayed();
     }
 

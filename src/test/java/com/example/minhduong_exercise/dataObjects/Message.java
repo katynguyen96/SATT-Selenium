@@ -1,4 +1,4 @@
-package com.example.minhduong_exercise.common.constant;
+package com.example.minhduong_exercise.dataObjects;
 
 public enum Message {
     WELCOME("Welcome abc@gmail.com"),

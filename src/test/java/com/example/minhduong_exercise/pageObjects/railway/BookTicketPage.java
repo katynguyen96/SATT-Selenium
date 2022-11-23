@@ -1,7 +1,7 @@
 package com.example.minhduong_exercise.pageObjects.railway;
 
-import com.example.minhduong_exercise.common.constant.Station;
-import com.example.minhduong_exercise.common.constant.SeatType;
+import com.example.minhduong_exercise.dataObjects.Station;
+import com.example.minhduong_exercise.dataObjects.SeatType;
 import com.example.minhduong_exercise.common.utilities.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -17,52 +17,53 @@ public class BookTicketPage extends BasePage {
     private final By ddlSeatType = By.xpath("//select[@name='SeatType']");
     private final By ddlTicketAmount = By.xpath("//select[@name='TicketAmount']");
     private final By lblSuccessTitle = By.xpath("//h1");
+    private final String departDateXpath = "//option[@value='%s']";
 
 
     //Element
-    protected WebElement getBtnBookTicket() {
+    private WebElement getBtnBookTicket() {
         return DriverManager.getDriver().findElement(btnBookTicket);
     }
 
 
-    protected WebElement getDdlDepartDate() {
+    private WebElement getDdlDepartDate() {
         return DriverManager.getDriver().findElement(ddlDepartDate);
     }
 
 
-    protected WebElement getDdlDepartStation() {
+    private WebElement getDdlDepartStation() {
         return DriverManager.getDriver().findElement(ddlDepartStation);
     }
 
 
-    protected WebElement getDdlArriveStation() {
+    private WebElement getDdlArriveStation() {
         return DriverManager.getDriver().findElement(ddlArriveStation);
     }
 
 
-    protected WebElement getDdlSeatType() {
+    private WebElement getDdlSeatType() {
         return DriverManager.getDriver().findElement(ddlSeatType);
     }
 
 
-    protected WebElement getDdlTicketAmount() {
+    private WebElement getDdlTicketAmount() {
         return DriverManager.getDriver().findElement(ddlTicketAmount);
     }
 
 
-    protected WebElement getLblSuccessTitle() {
+    private WebElement getLblSuccessTitle() {
         return DriverManager.getDriver().findElement(lblSuccessTitle);
     }
 
-    protected WebElement departDate(String value) {
-        return getDdlDepartDate().findElement(By.xpath("//option[@value='" + value + "']"));
+    private WebElement departDate(String value) {
+        return getDdlDepartDate().findElement(By.xpath(String.format(departDateXpath, value)));
     }
 
-    protected WebElement getSelectedArriveStation() {
+    private WebElement getSelectedArriveStation() {
         return getDdlArriveStationSelect().getFirstSelectedOption();
     }
 
-    protected WebElement getSelectedDepartStation() {
+    private WebElement getSelectedDepartStation() {
         return getDdlDepartStationSelect().getFirstSelectedOption();
     }
 

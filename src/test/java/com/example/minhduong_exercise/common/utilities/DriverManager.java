@@ -1,7 +1,7 @@
 package com.example.minhduong_exercise.common.utilities;
 
-import com.example.minhduong_exercise.common.constant.Url;
-import com.example.minhduong_exercise.dataProvider.ConfigFileReader;
+import com.example.minhduong_exercise.dataObjects.Url;
+import com.example.minhduong_exercise.common.utilities.reader.ConfigFileReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
@@ -10,7 +10,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.net.URI;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DriverManager {
 
@@ -26,7 +29,7 @@ public class DriverManager {
         driver.get(Url.HOMEPAGE.getUrl());
     }
 
-    public static void setupDriver(String browserType) {
+    private static void setupDriver(String browserType) {
         switch (browserType.trim().toLowerCase()) {
             case "chrome":
                 initChromeDriver();
@@ -40,7 +43,7 @@ public class DriverManager {
         }
     }
 
-    private static void setupBrowser(){
+    private static void setupBrowser() {
         maximizeWindow();
         pageLoadTimeout();
         implicitlyWait();
@@ -74,9 +77,24 @@ public class DriverManager {
         setupBrowser();
     }
 
+    private static Map<String, String> getParamsOfUrl() {
+        String[] params = URI.create(driver.getCurrentUrl()).getQuery().split("&");
+        Map<String, String> map = new HashMap<>();
+        for (String param : params) {
+            String name = param.split("=")[0];
+            String value = param.split(name + "=")[1];
+            map.put(name, value);
+        }
+        return map;
+    }
+
     public static void scrollToView(WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView();", element);
+    }
+
+    public static String getParamValue(String paramName) {
+        return getParamsOfUrl().get(paramName);
     }
 
     public static Alert alertDriver() {

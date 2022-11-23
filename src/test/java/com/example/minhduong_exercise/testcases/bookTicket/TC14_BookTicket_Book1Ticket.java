@@ -1,8 +1,11 @@
 package com.example.minhduong_exercise.testcases.bookTicket;
 
 import com.example.minhduong_exercise.common.utilities.Utilities;
-import com.example.minhduong_exercise.common.constant.*;
 import com.example.minhduong_exercise.common.utilities.logs.Log;
+import com.example.minhduong_exercise.dataObjects.Message;
+import com.example.minhduong_exercise.dataObjects.SeatType;
+import com.example.minhduong_exercise.dataObjects.Station;
+import com.example.minhduong_exercise.dataObjects.Tab;
 import com.example.minhduong_exercise.pageObjects.railway.*;
 import com.example.minhduong_exercise.testcases.BaseTestSetUp;
 import org.testng.annotations.Test;
@@ -10,9 +13,9 @@ import org.testng.asserts.SoftAssert;
 
 public class TC14_BookTicket_Book1Ticket extends BaseTestSetUp {
 
-    @Test
+    @Test(description = "TC14_User can book 1 ticket at a time")
     public void TC14_Book_1_Ticket() {
-        System.out.println("TC14_User can book 1 ticket at a time");
+        Log.info("TC14_User can book 1 ticket at a time");
         Log.info("Pre-condition: Create and activate a new account");
         Log.info(" Navigate to QA Railway Website");
         registerAccount();
@@ -43,11 +46,11 @@ public class TC14_BookTicket_Book1Ticket extends BaseTestSetUp {
         String amountValue = successPage.getRowValue("Amount");
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(bookTicketPage.getSuccessTitleValue(), Message.BOOKTICKETSUCCESS.getMessage());
-        softAssert.assertEquals(departStationValue,Station.SAIGON.getStation());
-        softAssert.assertEquals(arriveStationValue,Station.NHATRANG.getStation());
-        softAssert.assertEquals(seatTypeValue,SeatType.SBWAC.getSeatType());
-        softAssert.assertEquals(amountValue,"1");
-        softAssert.assertEquals(dateValue,departDate);
+        softAssert.assertEquals(departStationValue, Station.SAIGON.getStation());
+        softAssert.assertEquals(arriveStationValue, Station.NHATRANG.getStation());
+        softAssert.assertEquals(seatTypeValue, SeatType.SBWAC.getSeatType());
+        softAssert.assertEquals(amountValue, "1");
+        softAssert.assertEquals(dateValue, departDate);
         softAssert.assertAll();
     }
 }

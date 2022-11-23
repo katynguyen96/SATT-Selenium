@@ -1,9 +1,9 @@
 package com.example.minhduong_exercise.testcases.login;
 
-import com.example.minhduong_exercise.common.constant.Message;
-import com.example.minhduong_exercise.common.constant.Tab;
+import com.example.minhduong_exercise.dataObjects.Message;
+import com.example.minhduong_exercise.dataObjects.Tab;
 import com.example.minhduong_exercise.common.utilities.logs.Log;
-import com.example.minhduong_exercise.dataProvider.ConfigFileReader;
+import com.example.minhduong_exercise.common.utilities.reader.ConfigFileReader;
 import com.example.minhduong_exercise.pageObjects.railway.LoginPage;
 import com.example.minhduong_exercise.testcases.BaseTestSetUp;
 import org.testng.Assert;
@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 public class TC01_Login_ValidAccount extends BaseTestSetUp {
     ConfigFileReader configFileReader = new ConfigFileReader();
 
-    @Test
+    @Test(description = "TC01_Test login with valid account")
     public void TC01_loginWithValidAccount() {
         Log.info("TC01_Test login with valid account");
         Log.info("Navigate to QA Railway Website");

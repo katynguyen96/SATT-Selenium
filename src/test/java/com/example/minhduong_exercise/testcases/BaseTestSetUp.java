@@ -1,11 +1,13 @@
 package com.example.minhduong_exercise.testcases;
 
-import com.example.minhduong_exercise.common.constant.Tab;
+import com.example.minhduong_exercise.dataObjects.Tab;
 import com.example.minhduong_exercise.common.utilities.DriverManager;
 import com.example.minhduong_exercise.common.utilities.Utilities;
 import com.example.minhduong_exercise.pageObjects.railway.RegisterPage;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 
 public class BaseTestSetUp {
 
@@ -13,7 +15,7 @@ public class BaseTestSetUp {
     private String password;
 
     @BeforeMethod
-    public void setUp() {
+    public void setUpBrowser(){
         DriverManager.open();
     }
 
