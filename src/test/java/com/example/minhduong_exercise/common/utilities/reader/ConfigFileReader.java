@@ -36,10 +36,10 @@ public class ConfigFileReader {
         else throw new RuntimeException("implicitlyWait not specified in the Configuration.properties file.");
     }
 
-    public long getPageloadTimeout() {
-        String pageloadTimeout = properties.getProperty("pageLoadTimeout");
-        if (pageloadTimeout != null) return Long.parseLong(pageloadTimeout);
-        else throw new RuntimeException("pageloadTimeout not specified in the Configuration.properties file.");
+    public long getPageLoadTimeout() {
+        String pageLoadTimeout = properties.getProperty("pageLoadTimeout");
+        if (pageLoadTimeout != null) return Long.parseLong(pageLoadTimeout);
+        else throw new RuntimeException("pageLoadTimeout not specified in the Configuration.properties file.");
     }
 
     public String getUsername() {

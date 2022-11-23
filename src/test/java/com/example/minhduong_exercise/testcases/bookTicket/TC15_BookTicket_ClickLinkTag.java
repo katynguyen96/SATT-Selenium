@@ -17,19 +17,19 @@ public class TC15_BookTicket_ClickLinkTag extends BaseTestSetUp {
         Log.info("TC15_User can open \"Book ticket\" page by clicking on \"Book ticket\" link in \"Train timetable\" page");
         Log.info("Pre-condition: Create and activate a new account");
         Log.info("Navigate to QA Railway Website");
-        registerAccount();
         Log.info("Register new account");
+        registerRandomAccount();
 
         LoginPage loginPage = new LoginPage();
         loginPage.tabNavigate(Tab.LOGIN);
-        loginPage.loginAccount(getEmail(), getPassword());
         Log.info("Login with new account");
+        loginPage.loginAccount(getEmail(), getPassword());
 
         TimetablePage timetablePage = new TimetablePage();
-        timetablePage.tabNavigate(Tab.TIMETABLE);
         Log.info("Click on \"Timetable\" tab");
-        timetablePage.clickLink(Station.HUE, Station.SAIGON);
+        timetablePage.tabNavigate(Tab.TIME_TABLE);
         Log.info(" Click on \"book ticket\" link of the route from \"Huế\" to \"Sài Gòn\"");
+        timetablePage.clickLink(Station.HUE, Station.SAI_GON);
 
         BookTicketPage bookTicketPage = new BookTicketPage();
         String selectedDepartStation = bookTicketPage.getSelectedDepartStationValue();
@@ -37,7 +37,7 @@ public class TC15_BookTicket_ClickLinkTag extends BaseTestSetUp {
 
         SoftAssert softassert = new SoftAssert();
         softassert.assertEquals(Station.HUE.getStation(), selectedDepartStation);
-        softassert.assertEquals(Station.SAIGON.getStation(), selectedArriveStation);
+        softassert.assertEquals(Station.SAI_GON.getStation(), selectedArriveStation);
         softassert.assertAll();
     }
 }

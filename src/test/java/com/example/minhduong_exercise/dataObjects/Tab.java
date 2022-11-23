@@ -3,14 +3,14 @@ package com.example.minhduong_exercise.dataObjects;
 public enum Tab {
     LOGIN("Login"),
     REGISTER("Register"),
-    BOOKTICKET("Book ticket"),
-    TICKETPRICE("Ticket price"),
-    TIMETABLE("Timetable"),
+    BOOK_TICKET("Book ticket"),
+    TICKET_PRICE("Ticket price"),
+    TIME_TABLE("Timetable"),
     CONTACT("Contact"),
     FAQ("FAQ"),
     HOME("Home"),
-    MYITCKET("My ticket"),
-    CHANGEPASS("Change password"),
+    MY_TICKET("My ticket"),
+    CHANGE_PASSWORD("Change password"),
     LOGOUT("Log out");
 
     public final String tab;

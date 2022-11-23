@@ -1,0 +1,6 @@
+.idea
+ExtentReports
+logs
+target
+Executables
+*.iml

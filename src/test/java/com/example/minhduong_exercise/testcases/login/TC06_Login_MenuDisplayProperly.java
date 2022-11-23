@@ -16,14 +16,14 @@ public class TC06_Login_MenuDisplayProperly extends BaseTestSetUp {
         Log.info("TC06_Test UI tab menu after login");
         Log.info("Navigate to QA Railway Website");
         LoginPage loginPage = new LoginPage();
-        loginPage.tabNavigate(Tab.LOGIN);
         Log.info("Click on \"Login\" tab");
-        loginPage.loginAccount(configFileReader.getUsername(), configFileReader.getPassword());
+        loginPage.tabNavigate(Tab.LOGIN);
         Log.info("Login with valid account");
+        loginPage.loginAccount(configFileReader.getUsername(), configFileReader.getPassword());
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertTrue(loginPage.isTabDisplayed("My ticket"));
-        softAssert.assertTrue(loginPage.isTabDisplayed("Change password"));
-        softAssert.assertTrue(loginPage.isTabDisplayed("Log out"));
+        softAssert.assertTrue(loginPage.isTabDisplayed("My ticket"), "My ticket tab is not display on UI");
+        softAssert.assertTrue(loginPage.isTabDisplayed("Change password"), "Change Password tab is not display on UI");
+        softAssert.assertTrue(loginPage.isTabDisplayed("Log out"), "Log out tab is not display on UI");
         softAssert.assertAll();
     }
 }

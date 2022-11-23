@@ -20,15 +20,14 @@ public class TC11_Register_EmptyPassword_ID extends BaseTestSetUp {
         Log.info("Click on \"Register\" tab");
 
         String email = Utilities.generateRandomEmail(8);
-        String confirmPassword = Utilities.generateRandomString(8);
-
-        registerPage.registerAccount(email, "", confirmPassword, "");
         Log.info("Enter valid email address and leave other fields empty");
         Log.info(" Click on \"Register\" button");
+        registerPage.registerAccount(email, "", "", "");
+
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(registerPage.getFormErrorMessage(), Message.WRONGINPUT.getMessage());
-        softAssert.assertEquals(registerPage.getErrorMessagePassword(), Message.INVALIDPASSLENGTH.getMessage());
-        softAssert.assertEquals(registerPage.getErrorMessagePIDPassword(), Message.INVALIDIDLENGTH.getMessage());
+        softAssert.assertEquals(registerPage.getFormErrorMessage(), Message.WRONG_INPUT.getMessage());
+        softAssert.assertEquals(registerPage.getErrorMessagePassword(), Message.INVALID_PASS_LENGTH.getMessage());
+        softAssert.assertEquals(registerPage.getErrorMessagePIDPassword(), Message.INVALID_ID_LENGTH.getMessage());
         softAssert.assertAll();
     }
 

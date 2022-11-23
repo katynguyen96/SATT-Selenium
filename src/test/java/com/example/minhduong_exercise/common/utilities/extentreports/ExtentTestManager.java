@@ -31,18 +31,14 @@ public class ExtentTestManager {
     }
 
     public static void addScreenShot(String message) {
-        String base64Image = "data:image/png;base64,"
-                + ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.BASE64);
-        getTest().log(Status.INFO, message,
-                getTest().addScreenCaptureFromBase64String(base64Image).getModel().getMedia().get(0));
+        String base64Image = "data:image/png;base64," + ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.BASE64);
+        getTest().log(Status.INFO, message, getTest().addScreenCaptureFromBase64String(base64Image).getModel().getMedia().get(0));
     }
 
     public static void addScreenShot(Status status, String message) {
 
-        String base64Image = "data:image/png;base64,"
-                + ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.BASE64);
-        getTest().log(status, message,
-                getTest().addScreenCaptureFromBase64String(base64Image).getModel().getMedia().get(0));
+        String base64Image = "data:image/png;base64," + ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.BASE64);
+        getTest().log(status, message, getTest().addScreenCaptureFromBase64String(base64Image).getModel().getMedia().get(0));
     }
 
     public static void logMessage(String message) {

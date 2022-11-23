@@ -2,7 +2,6 @@ package com.example.minhduong_exercise.common.utilities;
 
 import org.apache.commons.lang3.RandomStringUtils;
 
-
 public class Utilities {
     public static String getProjectPath() {
         return "@../../";

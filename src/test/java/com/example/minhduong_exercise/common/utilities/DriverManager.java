@@ -54,7 +54,7 @@ public class DriverManager {
     }
 
     private static void pageLoadTimeout() {
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(configFileReader.getPageloadTimeout()));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(configFileReader.getPageLoadTimeout()));
     }
 
     private static void implicitlyWait() {
@@ -97,8 +97,8 @@ public class DriverManager {
         return getParamsOfUrl().get(paramName);
     }
 
-    public static Alert alertDriver() {
-        return DriverManager.getDriver().switchTo().alert();
+    public static void alertAccept() {
+         DriverManager.getDriver().switchTo().alert().accept();
     }
 
     public static void close() {

@@ -29,7 +29,6 @@ public class ReportListener implements ITestListener {
     @Override
     public void onFinish(ITestContext iTestContext) {
         Log.info("End testing " + iTestContext.getName());
-        //Kết thúc và thực thi Extents Report
         ExtentManager.getExtentReports().flush();
     }
 
@@ -42,7 +41,6 @@ public class ReportListener implements ITestListener {
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
         Log.info(getTestName(iTestResult) + " test is passed.");
-        //ExtentReports log operation for passed tests.
         ExtentTestManager.logMessage(Status.PASS, getTestDescription(iTestResult));
     }
 
@@ -50,8 +48,7 @@ public class ReportListener implements ITestListener {
     public void onTestFailure(ITestResult iTestResult) {
         Log.error(getTestName(iTestResult) + " test is failed.");
 
-        ExtentTestManager.addScreenShot(Status.FAIL, getTestName(iTestResult));
-        ExtentTestManager.logMessage(Status.FAIL, getTestDescription(iTestResult));
+        ExtentTestManager.addScreenShot(Status.FAIL, getTestDescription(iTestResult));
     }
 
     @Override

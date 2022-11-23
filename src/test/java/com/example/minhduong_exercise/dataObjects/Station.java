@@ -1,12 +1,12 @@
 package com.example.minhduong_exercise.dataObjects;
 
 public enum Station {
-    SAIGON("Sài Gòn"),
-    PHANTHIET("Phan Thiết"),
-    NHATRANG("Nha Trang"),
-    DANANG("Đà Nẵng"),
+    SAI_GON("Sài Gòn"),
+    PHAN_THIET("Phan Thiết"),
+    NHA_TRANG("Nha Trang"),
+    DA_NANG("Đà Nẵng"),
     HUE("Huế"),
-    QUANGNGAI("Quảng Ngãi");
+    QUANG_NGAI("Quảng Ngãi");
 
     public final String departStation;
 

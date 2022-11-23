@@ -5,9 +5,7 @@ import com.example.minhduong_exercise.common.utilities.DriverManager;
 import com.example.minhduong_exercise.common.utilities.Utilities;
 import com.example.minhduong_exercise.pageObjects.railway.RegisterPage;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 
 public class BaseTestSetUp {
 
@@ -15,7 +13,7 @@ public class BaseTestSetUp {
     private String password;
 
     @BeforeMethod
-    public void setUpBrowser(){
+    public void setUpBrowser() {
         DriverManager.open();
     }
 
@@ -32,7 +30,7 @@ public class BaseTestSetUp {
         return password;
     }
 
-    public void registerAccount() {
+    public void registerRandomAccount() {
         RegisterPage registerPage = new RegisterPage();
         registerPage.tabNavigate(Tab.REGISTER);
         email = Utilities.generateRandomEmail(8);
