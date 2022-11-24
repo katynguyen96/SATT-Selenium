@@ -1,9 +1,13 @@
 package com.example.minhduong_exercise.testcases.login;
 
+import com.example.minhduong_exercise.common.utilities.DriverManager;
 import com.example.minhduong_exercise.dataObjects.Tab;
 import com.example.minhduong_exercise.common.utilities.logs.Log;
 import com.example.minhduong_exercise.common.utilities.reader.ConfigFileReader;
+import com.example.minhduong_exercise.dataObjects.Url;
+import com.example.minhduong_exercise.pageObjects.railway.ChangePasswordPage;
 import com.example.minhduong_exercise.pageObjects.railway.LoginPage;
+import com.example.minhduong_exercise.pageObjects.railway.MyTicketPage;
 import com.example.minhduong_exercise.testcases.BaseTestSetUp;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -24,6 +28,14 @@ public class TC06_Login_MenuDisplayProperly extends BaseTestSetUp {
         softAssert.assertTrue(loginPage.isTabDisplayed("My ticket"), "My ticket tab is not display on UI");
         softAssert.assertTrue(loginPage.isTabDisplayed("Change password"), "Change Password tab is not display on UI");
         softAssert.assertTrue(loginPage.isTabDisplayed("Log out"), "Log out tab is not display on UI");
+
+        MyTicketPage myTicketPage = new MyTicketPage();
+        myTicketPage.tabNavigate(Tab.MY_TICKET);
+        softAssert.assertEquals(DriverManager.getDriver().getCurrentUrl(), Url.MY_TICKET.getUrl());
+
+        ChangePasswordPage changePasswordPage = new ChangePasswordPage();
+        changePasswordPage.tabNavigate(Tab.CHANGE_PASSWORD);
+        softAssert.assertEquals(DriverManager.getDriver().getCurrentUrl(),Url.CHANGE_PASSWORD.getUrl());
         softAssert.assertAll();
     }
 }
