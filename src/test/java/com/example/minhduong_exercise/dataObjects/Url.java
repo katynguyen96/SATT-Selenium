@@ -15,7 +15,7 @@ public enum Url {
 
     public final String Url;
 
-    private Url(String Url) {
+    Url(String Url) {
         this.Url = Url;
     }
 

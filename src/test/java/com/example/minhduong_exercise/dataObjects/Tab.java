@@ -15,7 +15,7 @@ public enum Tab {
 
     public final String tab;
 
-    private Tab(String tab) {
+    Tab(String tab) {
         this.tab = tab;
     }
 
