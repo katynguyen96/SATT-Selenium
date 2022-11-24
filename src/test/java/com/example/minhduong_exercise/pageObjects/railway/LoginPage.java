@@ -47,6 +47,9 @@ public class LoginPage extends BasePage {
         return DriverManager.getDriver().findElement(lblErrorMessageInvalidAccount);
     }
 
+    private WebElement getTab(String tabName) {
+        return getMnuTabMenu().findElement(By.xpath(String.format(tabXpath, tabName)));
+    }
 
     //Method
     public String getErrorMessageInvalidAccount() {
@@ -59,11 +62,6 @@ public class LoginPage extends BasePage {
 
     public String getFormErrorMessage() {
         return getLblFormErrorMessage().getText();
-    }
-
-
-    private WebElement getTab(String tabName) {
-        return getMnuTabMenu().findElement(By.xpath(String.format(tabXpath, tabName)));
     }
 
     public Boolean isTabDisplayed(String tabName) {
