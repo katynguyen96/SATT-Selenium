@@ -4,7 +4,7 @@
     <listeners>
         <listener class-name="com.example.minhduong_exercise.common.utilities.listener.ReportListener"></listener>
     </listeners>
-    <test name="FirstTest">
+    <test name="Railway test">
         <packages>
             <package name="com.example.minhduong_exercise.testcases.bookTicket"/>
             <package name="com.example.minhduong_exercise.testcases.changePassword"/>

@@ -10,7 +10,7 @@ public enum SeatType {
 
     public final String seatType;
 
-    private SeatType(String seatType) {
+    SeatType(String seatType) {
         this.seatType = seatType;
     }
 

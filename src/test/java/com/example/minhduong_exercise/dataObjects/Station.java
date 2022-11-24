@@ -10,7 +10,7 @@ public enum Station {
 
     public final String departStation;
 
-    private Station(String departStation) {
+    Station(String departStation) {
         this.departStation = departStation;
     }
 
