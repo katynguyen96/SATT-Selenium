@@ -101,6 +101,10 @@ public class DriverManager {
          DriverManager.getDriver().switchTo().alert().accept();
     }
 
+    public static void setImplicitlyWait(long duration){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(duration));
+    }
+
     public static void close() {
         driver.quit();
     }
