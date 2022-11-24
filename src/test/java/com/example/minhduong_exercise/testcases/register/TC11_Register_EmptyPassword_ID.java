@@ -17,11 +17,11 @@ public class TC11_Register_EmptyPassword_ID extends BaseTestSetUp {
         Log.info("Navigate to QA Railway Website");
         RegisterPage registerPage = new RegisterPage();
         registerPage.tabNavigate(Tab.REGISTER);
-        Log.info("Click on \"Register\" tab");
+        Log.info("Click on 'Register' tab");
 
         String email = Utilities.generateRandomEmail(8);
         Log.info("Enter valid email address and leave other fields empty");
-        Log.info(" Click on \"Register\" button");
+        Log.info("Click on 'Register' button");
         registerPage.registerAccount(email, "", "", "");
 
         SoftAssert softAssert = new SoftAssert();

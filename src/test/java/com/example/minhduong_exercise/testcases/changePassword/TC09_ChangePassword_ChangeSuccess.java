@@ -26,11 +26,11 @@ public class TC09_ChangePassword_ChangeSuccess extends BaseTestSetUp {
         loginPage.loginAccount(getEmail(), getPassword());
 
         ChangePasswordPage changePasswordPage = new ChangePasswordPage();
-        Log.info("Click on \"Change Password\" tab");
+        Log.info("Click on 'Change Password' tab");
         changePasswordPage.tabNavigate(Tab.CHANGE_PASSWORD);
         String newPass = Utilities.generateRandomString(8);
         Log.info("Enter valid value into all fields.");
-        Log.info("Click on \"Change Password\" button");
+        Log.info("Click on 'Change Password' button");
         changePasswordPage.ChangePassword(getPassword(), newPass, newPass);
         Assert.assertEquals(changePasswordPage.getSuccessMessage(),Message.CHANGE_PASS_SUCCESS.getMessage());
     }

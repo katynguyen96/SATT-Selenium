@@ -17,7 +17,7 @@ public class TC02_Login_EmptyUsername extends BaseTestSetUp {
         Log.info("TC02_Test login with empty username");
         Log.info("Navigate to QA Railway Website");
         LoginPage loginPage = new LoginPage();
-        Log.info("Click on \"Login\" tab");
+        Log.info("Click on 'Login' tab");
         loginPage.tabNavigate(Tab.LOGIN);
         Log.info("Enter password: " + configFileReader.getPassword());
         loginPage.loginAccount("", configFileReader.getPassword());

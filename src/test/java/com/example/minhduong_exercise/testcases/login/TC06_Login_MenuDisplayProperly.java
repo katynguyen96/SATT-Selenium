@@ -16,7 +16,7 @@ public class TC06_Login_MenuDisplayProperly extends BaseTestSetUp {
         Log.info("TC06_Test UI tab menu after login");
         Log.info("Navigate to QA Railway Website");
         LoginPage loginPage = new LoginPage();
-        Log.info("Click on \"Login\" tab");
+        Log.info("Click on 'Login' tab");
         loginPage.tabNavigate(Tab.LOGIN);
         Log.info("Login with valid account");
         loginPage.loginAccount(configFileReader.getUsername(), configFileReader.getPassword());

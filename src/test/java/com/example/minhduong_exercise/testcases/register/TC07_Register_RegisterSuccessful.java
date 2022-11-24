@@ -16,10 +16,10 @@ public class TC07_Register_RegisterSuccessful extends BaseTestSetUp {
         Log.info("TC07_User can create new account");
         Log.info(" Navigate to QA Railway Website");
         RegisterPage registerPage = new RegisterPage();
-        Log.info("Click on \"Register\" tab");
+        Log.info("Click on 'Register' tab");
         registerPage.tabNavigate(Tab.REGISTER);
         Log.info("Enter valid information into all fields");
-        Log.info("Click on \"Register\" button");
+        Log.info("Click on 'Register' button");
         String email = Utilities.generateRandomEmail(8);
         String password = Utilities.generateRandomString(8);
         String PID = Utilities.generateRandomString(8);

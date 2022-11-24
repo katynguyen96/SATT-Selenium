@@ -27,17 +27,20 @@ public class TC14_BookTicket_Book1Ticket extends BaseTestSetUp {
         loginPage.loginAccount(getEmail(), getPassword());
 
         BookTicketPage bookTicketPage = new BookTicketPage();
-        Log.info("Click on \"Book ticket\" tab");
+        Log.info("Click on 'Book ticket' tab");
         bookTicketPage.tabNavigate(Tab.BOOK_TICKET);
 
         String departDateValue = Utilities.generateRandomNumberDepartDate();
         String departDate = bookTicketPage.getDepartDateValue(departDateValue);
-        Log.info("Select a \"Depart date\" from the list");
-        Log.info("Select \"Sài Gòn\" for \"Depart from\" and \"Nha Trang\" for \"Arrive at\".");
-        Log.info("Select \"Soft bed with air conditioner\" for \"Seat type\"");
-        Log.info(" Select \"1\" for \"Ticket amount\"");
-        Log.info("Click on \"Book ticket\" button");
-        bookTicketPage.bookTicket(departDateValue, Station.SAI_GON, Station.NHA_TRANG, SeatType.SBC, "1");
+        Station departStation = Station.SAI_GON;
+        Station arriveStation = Station.NHA_TRANG;
+        SeatType seatType = SeatType.SBC;
+        Log.info("Select a random 'Depart date' from the list");
+        Log.info("Select "+departStation.getStation()+" for 'Depart from' and "+arriveStation.getStation()+" for 'Arrive at'.");
+        Log.info("Select "+seatType.getSeatType()+" for 'Seat type'");
+        Log.info("Select '1' for 'Ticket amount'");
+        Log.info("Click on 'Book ticket' button");
+        bookTicketPage.bookTicket(departDateValue, departStation, arriveStation, seatType, "1");
 
         SuccessPage successPage = new SuccessPage();
         String departStationValue = successPage.getRowValue("Depart Station");
@@ -48,9 +51,9 @@ public class TC14_BookTicket_Book1Ticket extends BaseTestSetUp {
 
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(bookTicketPage.getSuccessTitleValue(), Message.BOOK_TICKET_SUCCESS.getMessage());
-        softAssert.assertEquals(departStationValue, Station.SAI_GON.getStation());
-        softAssert.assertEquals(arriveStationValue, Station.NHA_TRANG.getStation());
-        softAssert.assertEquals(seatTypeValue, SeatType.SBC.getSeatType());
+        softAssert.assertEquals(departStationValue, departStation.getStation());
+        softAssert.assertEquals(arriveStationValue, arriveStation.getStation());
+        softAssert.assertEquals(seatTypeValue, seatType.getSeatType());
         softAssert.assertEquals(amountValue, "1");
         softAssert.assertEquals(dateValue, departDate);
         softAssert.assertAll();

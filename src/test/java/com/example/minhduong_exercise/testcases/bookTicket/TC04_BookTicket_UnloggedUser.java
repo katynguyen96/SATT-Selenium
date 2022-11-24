@@ -15,7 +15,7 @@ public class TC04_BookTicket_UnloggedUser extends BaseTestSetUp {
     public void TC04_UnLoggedUser() {
         Log.info("TC04_Display Login form when user click Book ticket tab without login");
         Log.info("Navigate to QA Railway Website");
-        Log.info("Click on \"Book ticket\" tab");
+        Log.info("Click on 'Book ticket' tab");
         BookTicketPage bookTicketPage = new BookTicketPage();
         bookTicketPage.tabNavigate(Tab.BOOK_TICKET);
         String loginUrl = DriverManager.getDriver().getCurrentUrl();
