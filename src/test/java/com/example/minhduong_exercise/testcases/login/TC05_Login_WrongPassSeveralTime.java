@@ -1,5 +1,6 @@
 package com.example.minhduong_exercise.testcases.login;
 
+import com.example.minhduong_exercise.common.utilities.Utilities;
 import com.example.minhduong_exercise.dataObjects.Message;
 import com.example.minhduong_exercise.dataObjects.Tab;
 import com.example.minhduong_exercise.common.utilities.logs.Log;
@@ -19,11 +20,12 @@ public class TC05_Login_WrongPassSeveralTime extends BaseTestSetUp {
         LoginPage loginPage = new LoginPage();
         Log.info("Click on 'Login' tab");
         loginPage.tabNavigate(Tab.LOGIN);
+        String password = Utilities.generateRandomString(8);
         Log.info("Enter valid information into 'Username' textbox except 'Password' textbox.");
         Log.info("Click on 'Login' button");
         Log.info("Repeat step 3 three more times.");
         for (int i = 0; i < 4; i++) {
-            loginPage.loginAccount(configFileReader.getUsername(), "123123123");
+            loginPage.loginAccount(configFileReader.getUsername(), password);
         }
         Assert.assertEquals(loginPage.getErrorMessageInvalidAccount(), Message.MULTI_LOGIN.getMessage());
     }
