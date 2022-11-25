@@ -16,7 +16,7 @@ import java.util.Date;
 
 public class FTTC02_Filter_DepartDate extends BaseTestSetUp {
     @Test
-    public void TC01_loginWithValidAccount() {
+    public void FTTC02_Filter_DepartDate() {
         RegisterPage registerPage = new RegisterPage();
         registerPage.tabNavigate(Tab.REGISTER);
         Log.info("create new account");

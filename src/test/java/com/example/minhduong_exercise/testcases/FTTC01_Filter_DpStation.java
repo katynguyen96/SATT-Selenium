@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 public class FTTC01_Filter_DpStation extends BaseTestSetUp {
 
     @Test
-    public void TC01_loginWithValidAccount() {
+    public void FTTC01_Filter_DpStation() {
         RegisterPage registerPage = new RegisterPage();
         registerPage.tabNavigate(Tab.REGISTER);
         Log.info("Create new account");
