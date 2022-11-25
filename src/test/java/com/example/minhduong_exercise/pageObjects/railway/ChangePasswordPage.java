@@ -14,36 +14,4 @@ public class ChangePasswordPage extends BasePage {
 
 
     //Element
-    private WebElement getTxtCurrentPassword() {
-        return DriverManager.getDriver().findElement(txtCurrentPassword);
-    }
-
-    private WebElement getTxtNewPassword() {
-        return DriverManager.getDriver().findElement(txtNewPassword);
-    }
-
-    private WebElement getTxtConfirmPassword() {
-        return DriverManager.getDriver().findElement(txtConfirmPassword);
-    }
-
-    private WebElement getBtnChangePassword() {
-        return DriverManager.getDriver().findElement(btnChangePassword);
-    }
-
-    private WebElement getLblSuccessMessage() {
-        return DriverManager.getDriver().findElement(lblSuccessMessage);
-    }
-
-
-    //Method
-    public String getSuccessMessage() {
-        return getLblSuccessMessage().getText();
-    }
-
-    public void ChangePassword(String curPass, String newPass, String confirmPass) {
-        getTxtCurrentPassword().sendKeys(curPass);
-        getTxtNewPassword().sendKeys(newPass);
-        getTxtConfirmPassword().sendKeys(confirmPass);
-        getBtnChangePassword().click();
-    }
 }
