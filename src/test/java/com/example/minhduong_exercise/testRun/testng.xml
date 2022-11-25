@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite" verbose="1">
+    <listeners>
+        <listener class-name="com.example.minhduong_exercise.common.utilities.listener.ReportListener"></listener>
+    </listeners>
+    <test name="Railway test">
+        <classes>
+            <class name="com.example.minhduong_exercise.testcases.FTTC01_Filter_DpStation"/>
+            <class name="com.example.minhduong_exercise.testcases.FTTC02_Filter_DepartDate"/>
+        </classes>
+    </test>
+</suite>

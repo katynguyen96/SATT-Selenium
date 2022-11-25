@@ -11,12 +11,25 @@ public class LoginPage extends BasePage {
     private final By txtUsername = By.xpath("//input[@id='username']");
     private final By txtPassword = By.xpath("//input[@id='password']");
     private final By btnLogin = By.xpath("//input[@type='submit']");
-    private final By stWelcomeText = By.xpath("//div[@class='account']/strong");
-    private final By lblErrorMessageInvalidAccount = By.xpath("//div[@id='content']/p[contains(@class,'message error')]");
-    private final By lblFormErrorMessage = By.xpath("//div[@id='content']//p[contains(@class,'message error')]");
-    private final By mnuTabMenu = By.xpath("//div[@id='menu']");
-
-    private final String tabXpath = "//span[.='%s']";
 
     //Element
+    private WebElement getTxtUsername() {
+        return DriverManager.getDriver().findElement(txtUsername);
+    }
+
+    private WebElement getTxtPassword() {
+        return DriverManager.getDriver().findElement(txtPassword);
+    }
+
+    private WebElement getBtnLogin() {
+        return DriverManager.getDriver().findElement(btnLogin);
+    }
+
+    //Method
+    public void loginAccount(String userName, String passWord) {
+        getTxtUsername().sendKeys(userName);
+        getTxtPassword().sendKeys(passWord);
+        DriverManager.scrollToView(getBtnLogin());
+        getBtnLogin().click();
+    }
 }
