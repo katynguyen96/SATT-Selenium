@@ -7,6 +7,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.List;
+
 
 public class MyTicketPage extends BasePage {
 
@@ -15,7 +17,8 @@ public class MyTicketPage extends BasePage {
     private final By txtDepartDate = By.xpath("//div[@class='Filter']//input[@name='FilterDpDate']");
     private final By lblErrorMessage = By.xpath("//div[contains(@class,'error')]");
 
-    private final String filterTableXpath = "//table[@class='MyTable']//td[position()=count(//tr[@class='TableSmallHeader']/th[.='Depart Station']/preceding-sibling::th)+1 and .='%s']";
+    private final By trListTicket = By.xpath("//tr[@class!='TableSmallHeader']");
+    private final String filterTableXpath = "//table[@class='MyTable']//td[position()=count(//tr[@class='TableSmallHeader']/th[.='Depart Station']/preceding-sibling::th)+1 and .='%s']/..";
 
     private WebElement getDdlDpStationSelect() {
         return DriverManager.getDriver().findElement(ddlDpStationSelect);
@@ -38,23 +41,34 @@ public class MyTicketPage extends BasePage {
     }
 
 
-    private WebElement getFilterRow(Station DpStation) {
-        return DriverManager.getDriver().findElement(By.xpath(String.format(filterTableXpath, DpStation.getStation())));
+    private List<WebElement> getFilterRow(Station DpStation) {
+        return DriverManager.getDriver().findElements(By.xpath(String.format(filterTableXpath, DpStation.getStation())));
     }
 
-    public void filterDpStation(Station dpStation) {
+    private List<WebElement> getTicket(){
+        return DriverManager.getDriver().findElements(trListTicket);
+    }
+
+    public int filterDpStation(Station dpStation) {
+        int listTicketLength = getFilterRow(dpStation).size();
         getDpStation().selectByVisibleText(dpStation.getStation());
         DriverManager.scrollToView(getBtnApplyFilter());
         getBtnApplyFilter().click();
+        return listTicketLength;
     }
+
 
     public String getErrorMessage() {
         return getLblErrorMessage().getText();
     }
 
-    public Boolean isTicketDisplay(Station dpStation) {
+    public Boolean isTicketDisplay(Station dpStation, int size) {
         try {
-            return getFilterRow(dpStation).findElement(By.xpath("//ancestor::tr")).isDisplayed();
+            if(getTicket().size() != size){
+                return false;
+            } else {
+                return getTicket().equals(getFilterRow(dpStation));
+            }
         } catch (NoSuchElementException e) {
             return false;
         }

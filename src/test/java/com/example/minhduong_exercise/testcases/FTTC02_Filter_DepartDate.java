@@ -16,7 +16,7 @@ import java.util.Date;
 
 public class FTTC02_Filter_DepartDate extends BaseTestSetUp {
     @Test
-    public void FTTC02_Filter_DepartDate() {
+    public void FTTC02_Filter_DepartDate() throws InterruptedException {
         RegisterPage registerPage = new RegisterPage();
         registerPage.tabNavigate(Tab.REGISTER);
         Log.info("create new account");
@@ -32,9 +32,9 @@ public class FTTC02_Filter_DepartDate extends BaseTestSetUp {
 
         Log.info("Book ticket more than 6 time");
         BookTicketPage bookTicketPage = new BookTicketPage();
-        for (int i = 0; i <= 6; i++) {
+        for (int i = 1; i <= 6; i++) {
             bookTicketPage.tabNavigate(Tab.BOOK_TICKET);
-            bookTicketPage.bookTicket(Station.QUANG_NGAI, Station.NHA_TRANG);
+            bookTicketPage.bookTicket(i);
         }
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("M/d/yyyy");

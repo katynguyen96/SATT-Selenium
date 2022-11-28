@@ -34,10 +34,10 @@ public class BookTicketPage extends BasePage {
         return new Select(getDdlArriveStation());
     }
 
-    public void bookTicket(Station departStationValue, Station arriveStation) {
-        getDdlDepartStationSelect().selectByVisibleText(departStationValue.getStation());
-        getDdlArriveStationSelect().selectByVisibleText(arriveStation.getStation());
+    public void bookTicket(Integer departStationValue) throws InterruptedException {
+        getDdlDepartStationSelect().selectByValue(departStationValue.toString());
         DriverManager.scrollToView(getBtnBookTicket());
+        Thread.sleep(500);
         getBtnBookTicket().click();
     }
 
